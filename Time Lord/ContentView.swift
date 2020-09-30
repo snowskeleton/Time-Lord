@@ -20,7 +20,7 @@ struct ContentView: View {
                     }
                 }
             
-            Text("Timers")
+            TimerView()
                 .tag(2)
                 .tabItem {
                     VStack {
@@ -29,7 +29,7 @@ struct ContentView: View {
                     }
                 }
             
-            Text("Stop Watch")
+           StopwatchView()
                 .tag(3)
                 .tabItem {
                     VStack {
@@ -37,7 +37,8 @@ struct ContentView: View {
                         Text("Stopwatch")
                     }
                 }
-            Text("Settings")
+            
+            SettingsView()
                 .tag(4)
                 .tabItem {
                     VStack {
