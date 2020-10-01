@@ -33,6 +33,7 @@ struct AlarmView: View {
                 }
                 .sheet(isPresented: $showAddAlarm) {
                     EditAlarmView()
+                        .environment(\.managedObjectContext, self.moc)
                 }
             }
             
@@ -44,7 +45,8 @@ struct AlarmView: View {
                             Text("More text")
                         }
                     }
-                    .groupBoxStyle(DetailBoxStyle(destination: EditAlarmView()))
+                    .groupBoxStyle(DetailBoxStyle(destination: EditAlarmView()
+                                                    .environment(\.managedObjectContext, self.moc)))
                     Divider()
                 }
             }
