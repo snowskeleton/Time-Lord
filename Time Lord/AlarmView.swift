@@ -14,6 +14,7 @@ struct AlarmView: View {
     @State private var edit = false
     
     var body: some View {
+        NavigationView {
         VStack {
             HStack {
                 Button(action: {
@@ -30,6 +31,9 @@ struct AlarmView: View {
                         .font(.system(size: 24))
                         .padding(.trailing)
                 }
+                .sheet(isPresented: $showAddAlarm) {
+                    EditAlarmView()
+                }
             }
             
             ScrollView {
@@ -44,17 +48,10 @@ struct AlarmView: View {
                     Divider()
                 }
             }
-            .navigationBarTitle(Text(""), displayMode: .inline)
-            .navigationBarHidden(false)
-            .navigationBarItems(trailing: Button(action: {
-                showAddAlarm = true
-            }) {
-                Image(systemName: "plus")
-                    .font(.largeTitle)
-            })
+            .navigationBarHidden(true)
             
         }
-        
+        }
     }
 }
 
