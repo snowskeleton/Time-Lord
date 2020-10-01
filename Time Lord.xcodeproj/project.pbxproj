@@ -11,6 +11,8 @@
 		80221B5D25253D85003951D5 /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B5C25253D85003951D5 /* StopwatchView.swift */; };
 		80221B6325253D9D003951D5 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B6225253D9D003951D5 /* TimerView.swift */; };
 		80221B6B25253DAA003951D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B6A25253DAA003951D5 /* SettingsView.swift */; };
+		80221B7025254351003951D5 /* DetailBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B6F25254351003951D5 /* DetailBoxStyle.swift */; };
+		80221B752525437E003951D5 /* EditAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B742525437E003951D5 /* EditAlarmView.swift */; };
 		808BA09A2524E567005F7D91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0992524E567005F7D91 /* AppDelegate.swift */; };
 		808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09B2524E567005F7D91 /* SceneDelegate.swift */; };
 		808BA09E2524E567005F7D91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09D2524E567005F7D91 /* ContentView.swift */; };
@@ -44,6 +46,8 @@
 		80221B5C25253D85003951D5 /* StopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
 		80221B6225253D9D003951D5 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		80221B6A25253DAA003951D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		80221B6F25254351003951D5 /* DetailBoxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBoxStyle.swift; sourceTree = "<group>"; };
+		80221B742525437E003951D5 /* EditAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmView.swift; sourceTree = "<group>"; };
 		808BA0962524E567005F7D91 /* Time Lord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Lord.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		808BA0992524E567005F7D91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		808BA09B2524E567005F7D91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				808BA09B2524E567005F7D91 /* SceneDelegate.swift */,
 				808BA09D2524E567005F7D91 /* ContentView.swift */,
 				80221B572524F6D5003951D5 /* AlarmView.swift */,
+				80221B6F25254351003951D5 /* DetailBoxStyle.swift */,
+				80221B742525437E003951D5 /* EditAlarmView.swift */,
 				80221B6225253D9D003951D5 /* TimerView.swift */,
 				80221B6A25253DAA003951D5 /* SettingsView.swift */,
 				80221B5C25253D85003951D5 /* StopwatchView.swift */,
@@ -281,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80221B7025254351003951D5 /* DetailBoxStyle.swift in Sources */,
 				80221B6325253D9D003951D5 /* TimerView.swift in Sources */,
 				80221B6B25253DAA003951D5 /* SettingsView.swift in Sources */,
 				808BA09A2524E567005F7D91 /* AppDelegate.swift in Sources */,
@@ -288,6 +295,7 @@
 				80221B5D25253D85003951D5 /* StopwatchView.swift in Sources */,
 				80221B582524F6D5003951D5 /* AlarmView.swift in Sources */,
 				808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */,
+				80221B752525437E003951D5 /* EditAlarmView.swift in Sources */,
 				808BA09E2524E567005F7D91 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
