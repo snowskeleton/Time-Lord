@@ -9,13 +9,15 @@ import SwiftUI
 struct EditAlarmView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
-
-//    @Binding var new: Bool
+    
+    //    @Binding var new: Bool
     @State private var time = Date()
     @State private var name = ""
     @State private var snooze = false
+    @State private var showDaysPicker = false
     
     var body: some View {
+        NavigationView {
         VStack {
             
             HStack {
@@ -34,9 +36,10 @@ struct EditAlarmView: View {
                 .datePickerStyle(WheelDatePickerStyle())
                 .labelsHidden()
             Form {
-                HStack {
-                    Text("Repeat")
-                    Spacer()
+                NavigationLink(destination: DayOfTheWeekPicker()) {
+                    HStack {
+                        Text("Repeat")
+                    }
                 }
                 TextField("Name", text: $name)
                 Toggle(isOn: $snooze, label: {
@@ -45,5 +48,7 @@ struct EditAlarmView: View {
             }
             Spacer()
         }
+        .navigationBarHidden(true)
     }
+}
 }
