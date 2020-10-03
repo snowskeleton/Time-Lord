@@ -39,19 +39,17 @@ struct AlarmView: View {
 
                 List {
                     ForEach(alarms, id: \.self) { alarm in
-                            HStack {
-                                VStack(alignment: .leading){
-                                    Text("\(alarm.timeOfDay ?? Date(), formatter: DateFormatter.hoursAndMinutes)")
-                                        .font(.largeTitle)
-                                    Text("Days of the week")
-                                }
-
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text("\(alarm.timeOfDay ?? Date(), formatter: DateFormatter.hoursAndMinutes)")
+                                    .font(.largeTitle)
+                                Text("Days of the week")
                             }
+                        }
                     }
                     .onDelete(perform: removeRows)
                 }
                 .navigationBarHidden(true)
-
             }
         }
     }
