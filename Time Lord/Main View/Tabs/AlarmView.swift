@@ -47,17 +47,25 @@ struct AlarmView: View {
                                     Text("Days of the week")
                                 }
                                 Spacer()
-                                
+
                             }
                         }
                         .groupBoxStyle(DetailBoxStyle(destination: EditAlarmView()
                                                         .environment(\.managedObjectContext, self.moc)))
                         Divider()
                     }
+                    .onDelete(perform: removeRows)
                 }
                 .navigationBarHidden(true)
 
             }
+        }
+    }
+    func removeRows(at offsets: IndexSet) {
+        for index in offsets {
+            let alarm = alarms[index]
+            moc.delete(alarm)
+            try? self.moc.save()
         }
     }
 }
