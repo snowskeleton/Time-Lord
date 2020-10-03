@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		80221B7025254351003951D5 /* DetailBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B6F25254351003951D5 /* DetailBoxStyle.swift */; };
 		80221B752525437E003951D5 /* EditAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B742525437E003951D5 /* EditAlarmView.swift */; };
 		80221B8225262A9C003951D5 /* DayOfTheWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */; };
+		804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */; };
+		804C6B64252850F50024FD38 /* SwipeCell in Frameworks */ = {isa = PBXBuildFile; productRef = 804C6B63252850F50024FD38 /* SwipeCell */; };
 		808BA09A2524E567005F7D91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0992524E567005F7D91 /* AppDelegate.swift */; };
 		808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09B2524E567005F7D91 /* SceneDelegate.swift */; };
 		808BA09E2524E567005F7D91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09D2524E567005F7D91 /* ContentView.swift */; };
@@ -50,6 +52,7 @@
 		80221B6F25254351003951D5 /* DetailBoxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBoxStyle.swift; sourceTree = "<group>"; };
 		80221B742525437E003951D5 /* EditAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmView.swift; sourceTree = "<group>"; };
 		80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeekPicker.swift; sourceTree = "<group>"; };
+		804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesDateFormatter.swift; sourceTree = "<group>"; };
 		808BA0962524E567005F7D91 /* Time Lord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Lord.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		808BA0992524E567005F7D91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		808BA09B2524E567005F7D91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804C6B64252850F50024FD38 /* SwipeCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +126,15 @@
 			path = Alarms;
 			sourceTree = "<group>";
 		};
+		804C6B4B25264D260024FD38 /* Extensions and Styles */ = {
+			isa = PBXGroup;
+			children = (
+				80221B6F25254351003951D5 /* DetailBoxStyle.swift */,
+				804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */,
+			);
+			path = "Extensions and Styles";
+			sourceTree = "<group>";
+		};
 		808BA08D2524E567005F7D91 = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +161,7 @@
 				808BA0992524E567005F7D91 /* AppDelegate.swift */,
 				808BA09B2524E567005F7D91 /* SceneDelegate.swift */,
 				80221B7E25262A67003951D5 /* Main View */,
-				80221B6F25254351003951D5 /* DetailBoxStyle.swift */,
+				804C6B4B25264D260024FD38 /* Extensions and Styles */,
 				808BA0A22524E568005F7D91 /* Assets.xcassets */,
 				808BA0A72524E568005F7D91 /* LaunchScreen.storyboard */,
 				808BA0AA2524E568005F7D91 /* Info.plist */,
@@ -200,6 +213,9 @@
 			dependencies = (
 			);
 			name = "Time Lord";
+			packageProductDependencies = (
+				804C6B63252850F50024FD38 /* SwipeCell */,
+			);
 			productName = "Time Lord";
 			productReference = 808BA0962524E567005F7D91 /* Time Lord.app */;
 			productType = "com.apple.product-type.application";
@@ -271,6 +287,9 @@
 				Base,
 			);
 			mainGroup = 808BA08D2524E567005F7D91;
+			packageReferences = (
+				804C6B62252850F50024FD38 /* XCRemoteSwiftPackageReference "SwipeCell" */,
+			);
 			productRefGroup = 808BA0972524E567005F7D91 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -323,6 +342,7 @@
 				80221B5D25253D85003951D5 /* StopwatchView.swift in Sources */,
 				80221B582524F6D5003951D5 /* AlarmView.swift in Sources */,
 				808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */,
+				804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */,
 				80221B752525437E003951D5 /* EditAlarmView.swift in Sources */,
 				808BA09E2524E567005F7D91 /* ContentView.swift in Sources */,
 			);
@@ -653,6 +673,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		804C6B62252850F50024FD38 /* XCRemoteSwiftPackageReference "SwipeCell" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:fatbobman/SwipeCell.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		804C6B63252850F50024FD38 /* SwipeCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 804C6B62252850F50024FD38 /* XCRemoteSwiftPackageReference "SwipeCell" */;
+			productName = SwipeCell;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		808BA09F2524E567005F7D91 /* Time_Lord.xcdatamodeld */ = {
