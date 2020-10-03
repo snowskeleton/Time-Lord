@@ -15,44 +15,49 @@ struct AlarmView: View {
     
     var body: some View {
         NavigationView {
-        VStack {
-            HStack {
-                Button(action: {
-                    edit = true
-                }) {
-                    Text("Edit")
-                        .padding(.leading)
-                }
-                Spacer()
-                Button(action: {
-                    showAddAlarm = true
-                }) {
-                    Image(systemName: "plus")
-                        .font(.system(size: 24))
-                        .padding(.trailing)
-                }
-                .sheet(isPresented: $showAddAlarm) {
-                    EditAlarmView()
-                        .environment(\.managedObjectContext, self.moc)
-                }
-            }
-            
-            ScrollView {
-                ForEach(alarms, id: \.self) { alarm in
-                    GroupBox(label: Text("\(alarm.name ?? "")")) {
-                        VStack {
-                            Text("Content")
-                            Text("More text")
-                        }
+            VStack {
+                HStack {
+                    Button(action: {
+                        edit = true
+                    }) {
+                        Text("Edit")
+                            .padding(.leading)
                     }
-                    .groupBoxStyle(DetailBoxStyle(destination: EditAlarmView()
-                                                    .environment(\.managedObjectContext, self.moc)))
-                    Divider()
+                    Spacer()
+                    Button(action: {
+                        showAddAlarm = true
+                    }) {
+                        Image(systemName: "plus")
+                            .font(.system(size: 24))
+                            .padding(.trailing)
+                    }
+                    .sheet(isPresented: $showAddAlarm) {
+                        EditAlarmView()
+                            .environment(\.managedObjectContext, self.moc)
+                    }
                 }
+
+                ScrollView {
+                    ForEach(alarms, id: \.self) { alarm in
+                        GroupBox(label: Text("\(alarm.name ?? "")")) {
+                            HStack {
+                                VStack(alignment: .leading){
+                                    Text("\(alarm.timeOfDay ?? Date(), formatter: DateFormatter.hoursAndMinutes)")
+                                        .font(.largeTitle)
+                                    Text("Days of the week")
+                                }
+                                Spacer()
+                                
+                            }
+                        }
+                        .groupBoxStyle(DetailBoxStyle(destination: EditAlarmView()
+                                                        .environment(\.managedObjectContext, self.moc)))
+                        Divider()
+                    }
+                }
+                .navigationBarHidden(true)
+
             }
-            .navigationBarHidden(true)
-            
-        }
         }
     }
 }
