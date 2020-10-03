@@ -4,6 +4,7 @@
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" customClassName="[Bool]"/>
         <attribute name="daysOfWeekString" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="notificationID" optional="YES" attributeType="String"/>
         <attribute name="snooze" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -11,6 +12,6 @@
         <attribute name="timeOfDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>
