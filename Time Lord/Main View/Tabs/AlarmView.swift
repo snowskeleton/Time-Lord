@@ -43,7 +43,7 @@ struct AlarmView: View {
                             VStack(alignment: .leading){
                                 Text("\(alarm.timeOfDay ?? Date(), formatter: DateFormatter.hoursAndMinutes)")
                                     .font(.largeTitle)
-                                Text("Days of the week")
+                                Text("\(alarm.daysOfWeekString ?? "" )")
                             }
                         }
                     }

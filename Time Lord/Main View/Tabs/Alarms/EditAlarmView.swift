@@ -18,7 +18,7 @@ struct EditAlarmView: View {
     @State private var snooze = false
     @State private var showDaysPicker = false
     @State private var saveMe = false
-    @State var daysOfWeek = [false, false, false, false, false, false, false]
+    @State var daysOfWeek = [true, false, false, false, false, false, true]
     
     var body: some View {
         NavigationView {
@@ -73,8 +73,31 @@ struct EditAlarmView: View {
             alarm?.active = true
             alarm!.name = name
             alarm!.snooze = snooze
-            alarm?.timeOfDay = time
+            alarm!.timeOfDay = time
+            alarm!.daysOfWeekString = boolToString(alarm!.daysOfWeek!)
             try? self.moc.save()
         }
+    }
+
+    fileprivate func boolToString(_ days: [Bool]) -> String {
+        if days[0] == true && days[6] == true {
+            return "Weekends"
+        }
+        var weekdays = true
+        for i in 1...5 {
+            if days[i] == false {
+                weekdays = false
+            }
+        }
+        if weekdays == true { return "Weekdays" }
+        var daysOfWeek: [String] = []
+        if days[0] == true { daysOfWeek.append("Sunday") }
+        if days[1] == true { daysOfWeek.append("Monday") }
+        if days[2] == true { daysOfWeek.append("Tuesday") }
+        if days[3] == true { daysOfWeek.append("Wednesday") }
+        if days[4] == true { daysOfWeek.append("Thursday") }
+        if days[5] == true { daysOfWeek.append("Friday") }
+        if days[6] == true { daysOfWeek.append("Saturday") }
+        return daysOfWeek.joined(separator: ", ")
     }
 }
