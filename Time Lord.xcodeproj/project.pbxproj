@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,7 +15,6 @@
 		80221B752525437E003951D5 /* EditAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B742525437E003951D5 /* EditAlarmView.swift */; };
 		80221B8225262A9C003951D5 /* DayOfTheWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */; };
 		804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */; };
-		804C6B64252850F50024FD38 /* SwipeCell in Frameworks */ = {isa = PBXBuildFile; productRef = 804C6B63252850F50024FD38 /* SwipeCell */; };
 		808BA09A2524E567005F7D91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0992524E567005F7D91 /* AppDelegate.swift */; };
 		808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09B2524E567005F7D91 /* SceneDelegate.swift */; };
 		808BA09E2524E567005F7D91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09D2524E567005F7D91 /* ContentView.swift */; };
@@ -75,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				804C6B64252850F50024FD38 /* SwipeCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +212,6 @@
 			);
 			name = "Time Lord";
 			packageProductDependencies = (
-				804C6B63252850F50024FD38 /* SwipeCell */,
 			);
 			productName = "Time Lord";
 			productReference = 808BA0962524E567005F7D91 /* Time Lord.app */;
@@ -288,7 +285,6 @@
 			);
 			mainGroup = 808BA08D2524E567005F7D91;
 			packageReferences = (
-				804C6B62252850F50024FD38 /* XCRemoteSwiftPackageReference "SwipeCell" */,
 			);
 			productRefGroup = 808BA0972524E567005F7D91 /* Products */;
 			projectDirPath = "";
@@ -673,25 +669,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		804C6B62252850F50024FD38 /* XCRemoteSwiftPackageReference "SwipeCell" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:fatbobman/SwipeCell.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		804C6B63252850F50024FD38 /* SwipeCell */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 804C6B62252850F50024FD38 /* XCRemoteSwiftPackageReference "SwipeCell" */;
-			productName = SwipeCell;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		808BA09F2524E567005F7D91 /* Time_Lord.xcdatamodeld */ = {
