@@ -37,22 +37,16 @@ struct AlarmView: View {
                     }
                 }
 
-                ScrollView {
+                List {
                     ForEach(alarms, id: \.self) { alarm in
-                        GroupBox(label: Text("\(alarm.name ?? "")")) {
                             HStack {
                                 VStack(alignment: .leading){
                                     Text("\(alarm.timeOfDay ?? Date(), formatter: DateFormatter.hoursAndMinutes)")
                                         .font(.largeTitle)
                                     Text("Days of the week")
                                 }
-                                Spacer()
 
                             }
-                        }
-                        .groupBoxStyle(DetailBoxStyle(destination: EditAlarmView()
-                                                        .environment(\.managedObjectContext, self.moc)))
-                        Divider()
                     }
                     .onDelete(perform: removeRows)
                 }
