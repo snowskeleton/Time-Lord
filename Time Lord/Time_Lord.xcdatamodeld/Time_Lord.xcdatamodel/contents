@@ -3,12 +3,12 @@
     <entity name="Alarm" representedClassName="Alarm" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" customClassName="[Bool]"/>
-        <attribute name="daysOfWeekString" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="daysOfWeekString" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
-        <attribute name="notificationID" optional="YES" attributeType="String"/>
+        <attribute name="notificationID" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="snooze" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="sound" optional="YES" attributeType="String"/>
+        <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="timeOfDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
