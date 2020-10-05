@@ -12,18 +12,18 @@ struct EditAlarmView: View {
     @FetchRequest(entity: Alarm.entity(), sortDescriptors: []) var alarms: FetchedResults<Alarm>
 
     @State private var new = true
-    @State var alarm: Alarm
+    @Binding var alarm: Alarm
     @State private var time = Date()
     @State private var name = ""
     @State private var snooze = false
     @State private var showDaysPicker = false
     @State private var saveMe = false
-    @State var daysOfWeek: [Bool]
+    @Binding var daysOfWeek: [Bool]
 
-    init(alarm: State<Alarm>) {
-        _alarm = alarm
-        self._daysOfWeek = State<[Bool]>(initialValue: [false, false, false, false, false, false, false])
-        //        print(alarm.daysOfWeek)
+    init(alarm: Binding<Alarm>) {
+        self._alarm = alarm
+        print(Binding<[Bool]>(alarm.daysOfWeek)!)
+        self._daysOfWeek = Binding<[Bool]>(alarm.daysOfWeek)!
     }
     
     var body: some View {

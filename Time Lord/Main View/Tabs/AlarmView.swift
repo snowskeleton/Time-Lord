@@ -35,7 +35,7 @@ struct AlarmView: View {
                             .padding(.trailing)
                     }
                     .sheet(isPresented: $showAddAlarm) {
-                        EditAlarmView(alarm: State<Alarm>(initialValue: newAlarm!))
+                        EditAlarmView(alarm: Binding<Alarm>.constant(newAlarm!))
                             .environment(\.managedObjectContext, self.moc)
                     }
                 }
@@ -53,7 +53,7 @@ struct AlarmView: View {
                             }
                         }
                         .sheet(isPresented: $showEditAlarm) {
-                            EditAlarmView(alarm: State<Alarm>(initialValue: alarm))
+                            EditAlarmView(alarm: Binding<Alarm>.constant(alarm))
                                 .environment(\.managedObjectContext, self.moc)
                         }
                         }
@@ -66,7 +66,10 @@ struct AlarmView: View {
     }
 
     func makeNewAlarm() -> Alarm {
-        return Alarm(context: self.moc)
+        newAlarm = Alarm(context: self.moc)
+        newAlarm!.daysOfWeek = [false, false, false, false, false, false, false]
+        try? self.moc.save()
+        return newAlarm!
     }
 
     fileprivate func deleteAlarm(at offsets: IndexSet) {
