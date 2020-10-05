@@ -22,7 +22,6 @@ struct EditAlarmView: View {
 
     init(alarm: Binding<Alarm>) {
         self._alarm = alarm
-        print(Binding<[Bool]>(alarm.daysOfWeek)!)
         self._daysOfWeek = Binding<[Bool]>(alarm.daysOfWeek)!
     }
     
