@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct DayOfTheWeekPicker: View {
-    //    @Binding var alarm: Alarm
-    @State private var activeDays = [false, false, false, false, false, false, false]
+//    @Binding var alarm: Alarm
+    @Binding var activeDays: [Bool]// = [false, false, false, false, false, false, false]
     @State private var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    //    @State private var
+
+    init(activeDays: Binding<[Bool]>) {
+        self._activeDays = activeDays
+    }
+
     var body: some View {
         List {
             ForEach(days, id: \.self) { day in

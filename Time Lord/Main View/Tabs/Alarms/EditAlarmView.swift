@@ -12,13 +12,19 @@ struct EditAlarmView: View {
     @FetchRequest(entity: Alarm.entity(), sortDescriptors: []) var alarms: FetchedResults<Alarm>
 
     @State private var new = true
-    @State var alarm: Alarm?
+    @State var alarm: Alarm
     @State private var time = Date()
     @State private var name = ""
     @State private var snooze = false
     @State private var showDaysPicker = false
     @State private var saveMe = false
-    @State var daysOfWeek = [true, false, false, false, false, false, true]
+    @State var daysOfWeek: [Bool]
+
+    init(alarm: State<Alarm>) {
+        _alarm = alarm
+        self._daysOfWeek = State<[Bool]>(initialValue: [false, false, false, false, false, false, false])
+        //        print(alarm.daysOfWeek)
+    }
     
     var body: some View {
         NavigationView {
@@ -40,7 +46,7 @@ struct EditAlarmView: View {
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
                 Form {
-                    NavigationLink(destination: DayOfTheWeekPicker()) {
+                    NavigationLink(destination: DayOfTheWeekPicker(activeDays: Binding<[Bool]>.constant(alarm.daysOfWeek ?? [false, false, false, false, false, false, false]))) {
                         HStack {
                             Text("Repeat")
                         }
@@ -53,30 +59,23 @@ struct EditAlarmView: View {
                 Spacer()
             }
             .navigationBarHidden(true)
-        }.onAppear {
-            if alarm == nil {
-                alarm = Alarm(context: self.moc)
-            } else {
-                new = false
-            }
         }
         .onDisappear() {
             if saveMe == false {
-                self.moc.delete(alarm!)
+                self.moc.delete(alarm)
             }
         }
     }
     fileprivate func save() {
         saveMe = true
-        if new {
-            alarm?.daysOfWeek = daysOfWeek
-            alarm?.active = true
-            alarm!.name = name
-            alarm!.snooze = snooze
-            alarm!.timeOfDay = time
-            alarm!.daysOfWeekString = boolToString(alarm!.daysOfWeek!)
-            try? self.moc.save()
-        }
+        alarm.id = UUID().uuidString
+        alarm.daysOfWeek = daysOfWeek
+        alarm.active = true
+        alarm.name = name
+        alarm.snooze = snooze
+        alarm.timeOfDay = time
+        alarm.daysOfWeekString = boolToString(alarm.daysOfWeek!)
+        try? self.moc.save()
     }
 
     fileprivate func boolToString(_ days: [Bool]) -> String {
