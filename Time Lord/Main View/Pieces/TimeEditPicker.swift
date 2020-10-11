@@ -28,7 +28,7 @@ struct TimeEditPicker: View {
 
                 Picker("", selection: self.$selectedMinute) {
                     ForEach(0..<60) {
-                        Text(String($0)).tag($0)
+                        Text(String(format: "%02d", $0)).tag($0)
                     }
                 }
                 .labelsHidden()
