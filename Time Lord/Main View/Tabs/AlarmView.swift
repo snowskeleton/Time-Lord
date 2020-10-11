@@ -65,13 +65,6 @@ struct AlarmView: View {
         }
     }
 
-//    func makeNewAlarm() -> Alarm {
-//        newAlarm = Alarm(context: self.moc)
-//        newAlarm!.daysOfWeek = [false, false, false, false, false, false, false]
-//        try? self.moc.save()
-//        return newAlarm!
-//    }
-
     fileprivate func deleteAlarm(at offsets: IndexSet) {
         for index in offsets {
             let alarm = alarms[index]
