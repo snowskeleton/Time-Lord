@@ -57,7 +57,6 @@ struct EditAlarmView: View {
                         }
                     }
 
-
                     TextField("Name", text: $name)
 
                     Toggle(isOn: $snooze, label: {
