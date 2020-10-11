@@ -21,12 +21,6 @@ struct AlarmView: View {
         NavigationView {
             VStack {
                 HStack {
-                    Button(action: {
-                        edit = true
-                    }) {
-                        Text("Edit")
-                            .padding(.leading)
-                    }
                     Spacer()
                     Button(action: {
                         showAddAlarm = true
@@ -34,6 +28,7 @@ struct AlarmView: View {
                         Image(systemName: "plus")
                             .font(.system(size: 24))
                             .padding(.trailing)
+                            .padding(10)
                     }
                     .sheet(isPresented: $showAddAlarm) {
                         EditAlarmView()
@@ -47,17 +42,17 @@ struct AlarmView: View {
                             selectedAlarm = Int(alarms.firstIndex(of: alarm)!)
                             showEditAlarm = true
                         }) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("\(alarm.hours):\(alarm.minutes, specifier: "%02d")")
-                                    .font(.largeTitle)
-                                Text("\(alarm.weekDaysAsString())")
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("\(alarm.hours):\(alarm.minutes, specifier: "%02d")")
+                                        .font(.largeTitle)
+                                    Text("\(alarm.weekDaysAsString())")
+                                }
                             }
-                        }
-                        .sheet(isPresented: $showEditAlarm) {
-                            EditAlarmView(alarm: Binding<Alarm>.constant(alarms[selectedAlarm]))
-                                .environment(\.managedObjectContext, self.moc)
-                        }
+                            .sheet(isPresented: $showEditAlarm) {
+                                EditAlarmView(alarm: Binding<Alarm>.constant(alarms[selectedAlarm]))
+                                    .environment(\.managedObjectContext, self.moc)
+                            }
                         }
                     }
                     .onDelete(perform: deleteAlarm)
