@@ -27,9 +27,7 @@ struct EditAlarmView: View {
         _snooze = State(initialValue: alarm.snooze.wrappedValue)
         _daysOfWeek = State<[Bool]>(initialValue: alarm.daysOfWeek.wrappedValue!)
     }
-    init() {
-        
-    }
+    init() { }
     
     var body: some View {
         NavigationView {
