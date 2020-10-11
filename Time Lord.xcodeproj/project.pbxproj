@@ -24,7 +24,6 @@
 		808BA0A92524E568005F7D91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808BA0A72524E568005F7D91 /* LaunchScreen.storyboard */; };
 		808BA0B42524E568005F7D91 /* Time_LordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0B32524E568005F7D91 /* Time_LordTests.swift */; };
 		808BA0BF2524E568005F7D91 /* Time_LordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0BE2524E568005F7D91 /* Time_LordUITests.swift */; };
-		80B17AF525290EE600FAD260 /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B17AF425290EE600FAD260 /* Fetching.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		808BA0BA2524E568005F7D91 /* Time LordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Time LordUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		808BA0BE2524E568005F7D91 /* Time_LordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_LordUITests.swift; sourceTree = "<group>"; };
 		808BA0C02524E568005F7D91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80B17AF425290EE600FAD260 /* Fetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +158,6 @@
 			children = (
 				808BA0992524E567005F7D91 /* AppDelegate.swift */,
 				808BA09B2524E567005F7D91 /* SceneDelegate.swift */,
-				80B17AF425290EE600FAD260 /* Fetching.swift */,
 				80221B7E25262A67003951D5 /* Main View */,
 				804C6B4B25264D260024FD38 /* Extensions and Styles */,
 				808BA0A22524E568005F7D91 /* Assets.xcassets */,
@@ -341,7 +338,6 @@
 				80221B5D25253D85003951D5 /* StopwatchView.swift in Sources */,
 				80221B582524F6D5003951D5 /* AlarmView.swift in Sources */,
 				808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */,
-				80B17AF525290EE600FAD260 /* Fetching.swift in Sources */,
 				804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */,
 				80221B752525437E003951D5 /* EditAlarmView.swift in Sources */,
 				808BA09E2524E567005F7D91 /* ContentView.swift in Sources */,
