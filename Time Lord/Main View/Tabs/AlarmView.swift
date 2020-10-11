@@ -51,7 +51,7 @@ struct AlarmView: View {
                             VStack(alignment: .leading) {
                                 Text("\(alarm.hours):\(alarm.minutes)")
                                     .font(.largeTitle)
-                                Text("\(alarm.daysOfWeekString ?? "" )")
+                                Text("\(alarm.weekDaysAsString())")
                             }
                         }
                         .sheet(isPresented: $showEditAlarm) {
