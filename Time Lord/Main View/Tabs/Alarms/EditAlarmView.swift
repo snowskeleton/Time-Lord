@@ -9,20 +9,26 @@ import SwiftUI
 struct EditAlarmView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Alarm.entity(), sortDescriptors: []) var alarms: FetchedResults<Alarm>
 
-    @State private var new = true
-    @Binding var alarm: Alarm
+    @State private var alarm: Alarm?
     @State private var time = Date()
-    @State private var name = ""
+    @State private var name: String = ""
     @State private var snooze = false
+    @State var daysOfWeek: [Bool] = [false, false, false, false, false, false, false]
     @State private var showDaysPicker = false
-    @State private var saveMe = false
-    @Binding var daysOfWeek: [Bool]
 
     init(alarm: Binding<Alarm>) {
-        self._alarm = alarm
-        self._daysOfWeek = Binding<[Bool]>(alarm.daysOfWeek)!
+        _alarm = State(initialValue: alarm.wrappedValue)
+        _time = (alarm.timeOfDay.wrappedValue != nil
+                    ? State<Date>(initialValue: alarm.timeOfDay.wrappedValue!)
+                    : State<Date>(initialValue: (Date()))
+        )
+        _name = State(initialValue: alarm.name.wrappedValue ?? "")
+        _snooze = State(initialValue: alarm.snooze.wrappedValue)
+        _daysOfWeek = State<[Bool]>(initialValue: alarm.daysOfWeek.wrappedValue!)
+    }
+    init() {
+        
     }
     
     var body: some View {
@@ -44,30 +50,35 @@ struct EditAlarmView: View {
                     .padding()
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
+
                 Form {
-                    NavigationLink(destination: DayOfTheWeekPicker(activeDays: Binding<[Bool]>.constant(alarm.daysOfWeek ?? [false, false, false, false, false, false, false]))) {
+
+                    NavigationLink(destination: DayOfTheWeekPicker(activeDays: Binding<[Bool]>.constant(daysOfWeek))) {
                         HStack {
                             Text("Repeat")
                         }
                     }
+
                     TextField("Name", text: $name)
+
                     Toggle(isOn: $snooze, label: {
                         Text("Snooze")
                     })
+
                 }
                 Spacer()
             }
             .navigationBarHidden(true)
         }
-        .onDisappear() {
-            if saveMe == false {
-                self.moc.delete(alarm)
-            }
-        }
     }
     fileprivate func save() {
-        saveMe = true
-        alarm.id = UUID().uuidString
+        var alarm: Alarm
+        if self.alarm == nil {
+            alarm = Alarm(context: self.moc)
+            alarm.id = UUID().uuidString
+        } else {
+            alarm = self.alarm!
+        }
         alarm.daysOfWeek = daysOfWeek
         alarm.active = true
         alarm.name = name

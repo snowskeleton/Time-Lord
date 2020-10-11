@@ -12,8 +12,8 @@ struct AlarmView: View {
     @FetchRequest(entity: Alarm.entity(), sortDescriptors: [NSSortDescriptor(key: "timeOfDay", ascending: true)]) var alarms: FetchedResults<Alarm>
     @State private var showAddAlarm = false
     @State private var edit = false
-    @State private var newAlarm: Alarm?
     @State private var showEditAlarm = false
+    @State private var selectedAlarm = 0
 
     var body: some View {
         NavigationView {
@@ -27,7 +27,6 @@ struct AlarmView: View {
                     }
                     Spacer()
                     Button(action: {
-                        newAlarm = makeNewAlarm()
                         showAddAlarm = true
                     }) {
                         Image(systemName: "plus")
@@ -35,7 +34,7 @@ struct AlarmView: View {
                             .padding(.trailing)
                     }
                     .sheet(isPresented: $showAddAlarm) {
-                        EditAlarmView(alarm: Binding<Alarm>.constant(newAlarm!))
+                        EditAlarmView()
                             .environment(\.managedObjectContext, self.moc)
                     }
                 }
@@ -43,6 +42,7 @@ struct AlarmView: View {
                 List {
                     ForEach(alarms, id: \.self) { alarm in
                         Button(action: {
+                            selectedAlarm = Int(alarms.firstIndex(of: alarm)!)
                             showEditAlarm = true
                         }) {
                         HStack {
@@ -53,7 +53,7 @@ struct AlarmView: View {
                             }
                         }
                         .sheet(isPresented: $showEditAlarm) {
-                            EditAlarmView(alarm: Binding<Alarm>.constant(alarm))
+                            EditAlarmView(alarm: Binding<Alarm>.constant(alarms[selectedAlarm]))
                                 .environment(\.managedObjectContext, self.moc)
                         }
                         }
@@ -65,12 +65,12 @@ struct AlarmView: View {
         }
     }
 
-    func makeNewAlarm() -> Alarm {
-        newAlarm = Alarm(context: self.moc)
-        newAlarm!.daysOfWeek = [false, false, false, false, false, false, false]
-        try? self.moc.save()
-        return newAlarm!
-    }
+//    func makeNewAlarm() -> Alarm {
+//        newAlarm = Alarm(context: self.moc)
+//        newAlarm!.daysOfWeek = [false, false, false, false, false, false, false]
+//        try? self.moc.save()
+//        return newAlarm!
+//    }
 
     fileprivate func deleteAlarm(at offsets: IndexSet) {
         for index in offsets {
