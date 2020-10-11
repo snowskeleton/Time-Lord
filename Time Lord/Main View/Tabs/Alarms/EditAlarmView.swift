@@ -11,7 +11,8 @@ struct EditAlarmView: View {
     @Environment(\.managedObjectContext) var moc
 
     @State private var alarm: Alarm?
-    @State private var time = Date()
+    @State private var hours = Calendar.current.component(.hour, from: Date())
+    @State private var minutes = Calendar.current.component(.minute, from: Date())
     @State private var name: String = ""
     @State private var snooze = false
     @State var daysOfWeek: [Bool] = [false, false, false, false, false, false, false]
@@ -19,16 +20,14 @@ struct EditAlarmView: View {
 
     init(alarm: Binding<Alarm>) {
         _alarm = State(initialValue: alarm.wrappedValue)
-        _time = (alarm.timeOfDay.wrappedValue != nil
-                    ? State<Date>(initialValue: alarm.timeOfDay.wrappedValue!)
-                    : State<Date>(initialValue: (Date()))
-        )
+        _hours = State(initialValue: Int(alarm.hours.wrappedValue))
+        _minutes = State(initialValue: Int(alarm.minutes.wrappedValue))
         _name = State(initialValue: alarm.name.wrappedValue ?? "")
         _snooze = State(initialValue: alarm.snooze.wrappedValue)
         _daysOfWeek = State<[Bool]>(initialValue: alarm.daysOfWeek.wrappedValue!)
     }
     init() { }
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -44,10 +43,7 @@ struct EditAlarmView: View {
                     }.padding(.trailing)
                 }
 
-                DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
-                    .padding()
-                    .datePickerStyle(WheelDatePickerStyle())
-                    .labelsHidden()
+                TimeEditPicker(selectedHour: $hours, selectedMinute: $minutes)
 
                 Form {
 
@@ -81,7 +77,8 @@ struct EditAlarmView: View {
         alarm.active = true
         alarm.name = name
         alarm.snooze = snooze
-        alarm.timeOfDay = time
+        alarm.hours = Int64(hours)
+        alarm.minutes = Int64(minutes)
         alarm.daysOfWeekString = boolToString(alarm.daysOfWeek!)
         try? self.moc.save()
     }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct AlarmView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Alarm.entity(), sortDescriptors: [NSSortDescriptor(key: "timeOfDay", ascending: true)]) var alarms: FetchedResults<Alarm>
+    @FetchRequest(entity: Alarm.entity(),
+                  sortDescriptors: [NSSortDescriptor(key: "hours", ascending: true),
+                                    NSSortDescriptor(key: "minutes", ascending: true)]) var alarms: FetchedResults<Alarm>
     @State private var showAddAlarm = false
     @State private var edit = false
     @State private var showEditAlarm = false
@@ -47,7 +49,7 @@ struct AlarmView: View {
                         }) {
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("\(alarm.timeOfDay ?? Date(), formatter: DateFormatter.hoursAndMinutes)")
+                                Text("\(alarm.hours):\(alarm.minutes)")
                                     .font(.largeTitle)
                                 Text("\(alarm.daysOfWeekString ?? "" )")
                             }
