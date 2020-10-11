@@ -11,9 +11,8 @@
         <attribute name="notificationID" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="snooze" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
-        <attribute name="timeOfDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>
