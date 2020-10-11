@@ -51,11 +51,12 @@ struct EditAlarmView: View {
 
                 Form {
 
-                    NavigationLink(destination: DayOfTheWeekPicker(activeDays: Binding<[Bool]>.constant(daysOfWeek))) {
+                    NavigationLink(destination: DayOfTheWeekPicker(activeDays: $daysOfWeek)) {
                         HStack {
                             Text("Repeat")
                         }
                     }
+
 
                     TextField("Name", text: $name)
 
