@@ -25,6 +25,7 @@
 		808BA0B42524E568005F7D91 /* Time_LordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0B32524E568005F7D91 /* Time_LordTests.swift */; };
 		808BA0BF2524E568005F7D91 /* Time_LordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0BE2524E568005F7D91 /* Time_LordUITests.swift */; };
 		80ACA1432533937D0073B44D /* TimeEditPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ACA1422533937D0073B44D /* TimeEditPicker.swift */; };
+		80ACA14A25339F8A0073B44D /* Alarm+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ACA14825339F8A0073B44D /* Alarm+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		808BA0BE2524E568005F7D91 /* Time_LordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_LordUITests.swift; sourceTree = "<group>"; };
 		808BA0C02524E568005F7D91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80ACA1422533937D0073B44D /* TimeEditPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEditPicker.swift; sourceTree = "<group>"; };
+		80ACA14825339F8A0073B44D /* Alarm+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		808BA08D2524E567005F7D91 = {
 			isa = PBXGroup;
 			children = (
+				80ACA14825339F8A0073B44D /* Alarm+CoreDataClass.swift */,
 				808BA0982524E567005F7D91 /* Time Lord */,
 				808BA0B22524E568005F7D91 /* Time LordTests */,
 				808BA0BD2524E568005F7D91 /* Time LordUITests */,
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80221B8225262A9C003951D5 /* DayOfTheWeekPicker.swift in Sources */,
+				80ACA14A25339F8A0073B44D /* Alarm+CoreDataClass.swift in Sources */,
 				80221B7025254351003951D5 /* DetailBoxStyle.swift in Sources */,
 				80221B6325253D9D003951D5 /* TimerView.swift in Sources */,
 				80221B6B25253DAA003951D5 /* SettingsView.swift in Sources */,
