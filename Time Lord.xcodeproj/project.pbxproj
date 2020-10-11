@@ -101,6 +101,7 @@
 			children = (
 				80221B7F25262A71003951D5 /* Tabs */,
 				808BA09D2524E567005F7D91 /* ContentView.swift */,
+				80ACA1472533995C0073B44D /* Pieces */,
 			);
 			path = "Main View";
 			sourceTree = "<group>";
@@ -112,7 +113,6 @@
 				80221B8025262A8A003951D5 /* Alarms */,
 				80221B6225253D9D003951D5 /* TimerView.swift */,
 				80221B5C25253D85003951D5 /* StopwatchView.swift */,
-				80ACA1422533937D0073B44D /* TimeEditPicker.swift */,
 				80221B6A25253DAA003951D5 /* SettingsView.swift */,
 			);
 			path = Tabs;
@@ -121,8 +121,8 @@
 		80221B8025262A8A003951D5 /* Alarms */ = {
 			isa = PBXGroup;
 			children = (
-				80221B742525437E003951D5 /* EditAlarmView.swift */,
 				80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */,
+				80221B742525437E003951D5 /* EditAlarmView.swift */,
 			);
 			path = Alarms;
 			sourceTree = "<group>";
@@ -196,6 +196,14 @@
 				808BA0C02524E568005F7D91 /* Info.plist */,
 			);
 			path = "Time LordUITests";
+			sourceTree = "<group>";
+		};
+		80ACA1472533995C0073B44D /* Pieces */ = {
+			isa = PBXGroup;
+			children = (
+				80ACA1422533937D0073B44D /* TimeEditPicker.swift */,
+			);
+			path = Pieces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
