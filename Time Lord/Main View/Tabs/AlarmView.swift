@@ -43,10 +43,18 @@ struct AlarmView: View {
                             showEditAlarm = true
                         }) {
                             HStack {
-                                VStack(alignment: .leading) {
-                                    Text("\(alarm.hours):\(alarm.minutes, specifier: "%02d")")
-                                        .font(.largeTitle)
-                                    Text("\(alarm.weekDaysAsString())")
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        if alarm.name != nil {
+                                            Text("\(alarm.name!)")
+                                        }
+                                        Text("\(alarm.hours):\(alarm.minutes, specifier: "%02d")")
+                                            .font(.largeTitle)
+                                        Text("\(alarm.weekDaysAsString())")
+                                    }
+                                    Spacer()
+                                    Image(systemName: "chevron.right.circle")
+                                        .font(.system(size: 24))
                                 }
                             }
                             .sheet(isPresented: $showEditAlarm) {
