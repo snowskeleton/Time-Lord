@@ -79,29 +79,6 @@ struct EditAlarmView: View {
         alarm.snooze = snooze
         alarm.hours = Int64(hours)
         alarm.minutes = Int64(minutes)
-        alarm.daysOfWeekString = boolToString(alarm.daysOfWeek!)
         try? self.moc.save()
-    }
-
-    fileprivate func boolToString(_ days: [Bool]) -> String {
-        if days[0] == true && days[6] == true {
-            return "Weekends"
-        }
-        var weekdays = true
-        for i in 1...5 {
-            if days[i] == false {
-                weekdays = false
-            }
-        }
-        if weekdays == true { return "Weekdays" }
-        var daysOfWeek: [String] = []
-        if days[0] == true { daysOfWeek.append("Sunday") }
-        if days[1] == true { daysOfWeek.append("Monday") }
-        if days[2] == true { daysOfWeek.append("Tuesday") }
-        if days[3] == true { daysOfWeek.append("Wednesday") }
-        if days[4] == true { daysOfWeek.append("Thursday") }
-        if days[5] == true { daysOfWeek.append("Friday") }
-        if days[6] == true { daysOfWeek.append("Saturday") }
-        return daysOfWeek.joined(separator: ", ")
     }
 }
