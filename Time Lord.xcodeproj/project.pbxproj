@@ -14,6 +14,7 @@
 		80221B7025254351003951D5 /* DetailBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B6F25254351003951D5 /* DetailBoxStyle.swift */; };
 		80221B752525437E003951D5 /* EditAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B742525437E003951D5 /* EditAlarmView.swift */; };
 		80221B8225262A9C003951D5 /* DayOfTheWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */; };
+		8026AAFE2538F07000033E63 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026AAFD2538F07000033E63 /* LocalNotificationManager.swift */; };
 		804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */; };
 		808BA09A2524E567005F7D91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0992524E567005F7D91 /* AppDelegate.swift */; };
 		808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09B2524E567005F7D91 /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 		80221B6F25254351003951D5 /* DetailBoxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBoxStyle.swift; sourceTree = "<group>"; };
 		80221B742525437E003951D5 /* EditAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmView.swift; sourceTree = "<group>"; };
 		80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeekPicker.swift; sourceTree = "<group>"; };
+		8026AAFD2538F07000033E63 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesDateFormatter.swift; sourceTree = "<group>"; };
 		808BA0962524E567005F7D91 /* Time Lord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Lord.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		808BA0992524E567005F7D91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				808BA0992524E567005F7D91 /* AppDelegate.swift */,
+				8026AAFD2538F07000033E63 /* LocalNotificationManager.swift */,
 				808BA09B2524E567005F7D91 /* SceneDelegate.swift */,
 				80221B7E25262A67003951D5 /* Main View */,
 				804C6B4B25264D260024FD38 /* Extensions and Styles */,
@@ -355,6 +358,7 @@
 				808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */,
 				80ACA1432533937D0073B44D /* TimeEditPicker.swift in Sources */,
 				804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */,
+				8026AAFE2538F07000033E63 /* LocalNotificationManager.swift in Sources */,
 				80221B752525437E003951D5 /* EditAlarmView.swift in Sources */,
 				808BA09E2524E567005F7D91 /* ContentView.swift in Sources */,
 			);

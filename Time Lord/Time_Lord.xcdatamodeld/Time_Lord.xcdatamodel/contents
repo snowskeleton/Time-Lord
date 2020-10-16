@@ -8,7 +8,7 @@
         <attribute name="id" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="minutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
-        <attribute name="notificationID" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <attribute name="notificationIDs" optional="YES" attributeType="Transformable" defaultValueString="&quot;&quot;" customClassName="[String]"/>
         <attribute name="snooze" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
     </entity>
