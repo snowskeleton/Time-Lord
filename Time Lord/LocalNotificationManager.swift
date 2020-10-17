@@ -23,7 +23,7 @@ class LocalNotificationManager {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
 
             if granted == true && error == nil {
-                self.scheduleNotifications()
+                self.prepareNotification()
             }
         }
     }
@@ -43,54 +43,41 @@ class LocalNotificationManager {
             case .notDetermined:
                 self.requestAuthorization()
             case .authorized, .provisional:
-                self.scheduleNotifications()
+                self.prepareNotification()
             default:
                 break // Do nothing
             }
         }
     }
 
-    private func scheduleNotifications() {
+    private func prepareNotification() {
         for notif in notifications {
+            let content      = UNMutableNotificationContent()
+            content.title    = notif.title
+            content.sound    = .default
+
             if notif.repeating != [false, false, false, false, false, false, false] { //if not repeating on any day
                 for id in notif.ids {
                     if notif.repeating[notif.ids.firstIndex(of: id)!] == true {
-                        print(notif.repeating[notif.ids.firstIndex(of: id)!])
-                        let content      = UNMutableNotificationContent()
-                        content.title    = notif.title
-                        content.sound    = .default
-
                         var day = notif.datetime
                         day.weekday = notif.ids.firstIndex(of: id)! //add the specific weekday to the DateComponents
 
                         let trigger = UNCalendarNotificationTrigger(dateMatching: day, repeats: true)
-
                         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-
-                        UNUserNotificationCenter.current().add(request) { error in
-
-                            guard error == nil else { return }
-
-                            print("Notification scheduled! --- ID = \(id)")
-                        }
+                        scheduleNotification(request)
                     }
                 }
             } else {
-                let content      = UNMutableNotificationContent()
-                content.title    = notif.title
-                content.sound    = .default
-
                 let trigger = UNCalendarNotificationTrigger(dateMatching: notif.datetime, repeats: false)
-
                 let request = UNNotificationRequest(identifier: notif.ids[0], content: content, trigger: trigger) //use the first notif id if not repeating. not super clean, but not sure what else to do.
-
-                UNUserNotificationCenter.current().add(request) { error in
-
-                    guard error == nil else { return }
-
-                    print("Notification scheduled! --- ID = \(notif.ids[0])")
-                }
+                scheduleNotification(request)
             }
+        }
+    }
+
+    private func scheduleNotification(_ request: UNNotificationRequest) {
+        UNUserNotificationCenter.current().add(request) { error in
+            guard error == nil else { return }
         }
     }
 
