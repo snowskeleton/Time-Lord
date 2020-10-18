@@ -34,6 +34,7 @@ struct DayOfTheWeekPicker: View {
                     }
                 }
             }
+            Spacer()
             Button(action: {
                 toggleWeekdays()
             }) {
