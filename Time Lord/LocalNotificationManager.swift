@@ -13,10 +13,17 @@ class LocalNotificationManager {
     var notifications = [Notification]()
 
     struct Notification {
-        var ids:[String]
-        var title:String
-        var datetime:DateComponents
-        var repeating:[Bool]
+        var ids: [String]
+        var title: String
+        var datetime: DateComponents
+        var repeating: [Bool]
+        var isSingle: Bool {
+            if repeating == [false, false, false, false, false, false, false] {
+                return true
+            } else {
+                return false
+            }
+        }
     }
 
     private func requestAuthorization() {
@@ -56,11 +63,12 @@ class LocalNotificationManager {
             content.title    = notif.title
             content.sound    = .default
 
-            if notif.repeating != [false, false, false, false, false, false, false] { //if not repeating on any day
+            if notif.isSingle { //if not repeating on any day
                 for id in notif.ids {
-                    if notif.repeating[notif.ids.firstIndex(of: id)!] == true {
+                    let selectedDay = notif.ids.firstIndex(of: id)!
+                    if notif.repeating[selectedDay] == true {
                         var day = notif.datetime
-                        day.weekday = notif.ids.firstIndex(of: id)! + 1 //add the specific weekday to the DateComponents //plus 1 to make array counting match up with weekday counting. Sunday is 1
+                        day.weekday = selectedDay + 1 //add the specific weekday to the DateComponents //plus 1 to make array counting match up with weekday counting. Monday is 2
 
                         let trigger = UNCalendarNotificationTrigger(dateMatching: day, repeats: true)
                         scheduleNotification(UNNotificationRequest(identifier: id, content: content, trigger: trigger))
