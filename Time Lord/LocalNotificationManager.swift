@@ -18,11 +18,25 @@ class LocalNotificationManager {
         var datetime: DateComponents
         var repeating: [Bool]
         var isSingle: Bool {
-            if repeating == [false, false, false, false, false, false, false] {
-                return true
-            } else {
-                return false
+            if repeatingDays == [] { return true } else { return false }
+        }
+        var repeatingDays: [Int] {
+            var days: [Int] = []
+            for i in 1...repeating.count {
+                if repeating[i - 1] == true {
+                    days.append(i)
+                }
             }
+            return days
+        }
+        var cancelDays: [Int] {
+            var days: [Int] = []
+            for i in 1...repeating.count {
+                if repeating[i - 1] == false {
+                    days.append(i)
+                }
+            }
+            return days
         }
     }
 
@@ -63,22 +77,23 @@ class LocalNotificationManager {
             content.title    = notif.title
             content.sound    = .default
 
-            if notif.isSingle { //if not repeating on any day
-                for id in notif.ids {
-                    let selectedDay = notif.ids.firstIndex(of: id)!
-                    if notif.repeating[selectedDay] {
-                        var day = notif.datetime
-                        day.weekday = selectedDay + 1 //add the specific weekday to the DateComponents //plus 1 to make array counting match up with weekday counting. Monday is 2
-
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: day, repeats: true)
-                        scheduleNotification(UNNotificationRequest(identifier: id, content: content, trigger: trigger))
-                    } else {
-                        LocalNotificationManager().removeNotifications([id]) //else remove any notifications set for that day. probably not necessary, but I don't have enough confidance in the rest of my code.
-                    }
-                }
-            } else {
+            if notif.isSingle {
                 let trigger = UNCalendarNotificationTrigger(dateMatching: notif.datetime, repeats: false)
                 scheduleNotification(UNNotificationRequest(identifier: notif.ids[0], content: content, trigger: trigger))
+                for i in 1...6 { // 0 is used by this notification, but I need to cancel all the other ones.
+                    LocalNotificationManager().removeNotifications([notif.ids[i]])
+                }
+            } else {
+                for repeatingDay in notif.repeatingDays {
+                    var day = notif.datetime
+                    day.weekday = repeatingDay
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: day, repeats: true)
+                    scheduleNotification(UNNotificationRequest(identifier: notif.ids[repeatingDay - 1], content: content, trigger: trigger))
+
+                }
+                for cancelDay in notif.cancelDays {
+                    LocalNotificationManager().removeNotifications([notif.ids[cancelDay - 1]])
+                }
             }
         }
     }
