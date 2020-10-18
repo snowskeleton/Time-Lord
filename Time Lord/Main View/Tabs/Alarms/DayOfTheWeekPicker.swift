@@ -10,6 +10,14 @@ import SwiftUI
 struct DayOfTheWeekPicker: View {
     @Binding var activeDays: [Bool]
     @State private var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    var allWeekDaysSelected: Bool {
+        for i in 1...5 { if activeDays[i] == false { return false } }
+        return true
+    }
+    var allWeekEndsSelected: Bool {
+        if activeDays[0] && activeDays[6] { return true }
+        return false
+    }
 
     var body: some View {
         List {
@@ -27,17 +35,26 @@ struct DayOfTheWeekPicker: View {
                 }
             }
             Button(action: {
-                for i in 1...5 {
-                    activeDays[i] = true
-                    //eventually I'll need to make this toggle based on some criteria
+                if allWeekDaysSelected {
+                    for i in 1...5 {
+                        activeDays[i] = false
+                    }
+                } else {
+                    for i in 1...5 {
+                        activeDays[i] = true
+                    }
                 }
             }) {
                 Text("Weekdays")
             }
             Button(action: {
-                activeDays[0] = true
-                activeDays[6] = true
-                //same here
+                if allWeekEndsSelected {
+                    activeDays[0] = false
+                    activeDays[6] = false
+                } else {
+                    activeDays[0] = true
+                    activeDays[6] = true
+                }
             }) {
                 Text("Weekends")
             }
