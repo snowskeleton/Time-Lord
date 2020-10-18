@@ -31,7 +31,6 @@ struct EditAlarmView: View {
         let components = DateComponents(hour: Int(alarm.hours.wrappedValue), minute: Int(alarm.minutes.wrappedValue))
         _time = State(initialValue: calendar.date(from: components)!)
         _name = State(initialValue: alarm.name.wrappedValue ?? "")
-        _snooze = State(initialValue: alarm.snooze.wrappedValue)
         _daysOfWeek = State<[Bool]>(initialValue: alarm.daysOfWeek.wrappedValue!)
     }
     init() { }
