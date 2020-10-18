@@ -7,14 +7,13 @@
     <entity name="Alarm" representedClassName="Alarm" syncable="YES" codeGenerationType="category">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Bool]"/>
-        <attribute name="daysOfWeekString" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="hours" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="minutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="notificationIDs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="&quot;&quot;" customClassName="[String]"/>
+        <attribute name="offForADay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="routines" optional="YES" attributeType="Transformable" customClassName="[Routines]"/>
-        <attribute name="snooze" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
     </entity>
     <entity name="Before" representedClassName="Before" syncable="YES" codeGenerationType="class">
@@ -26,7 +25,7 @@
         <relationship name="before" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Before"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="208"/>
+        <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="193"/>
         <element name="Before" positionX="-103.203125" positionY="-36.828125" width="128" height="73"/>
         <element name="After" positionX="-106.6640625" positionY="-163.0859375" width="128" height="73"/>
         <element name="Routines" positionX="-180" positionY="-54" width="128" height="73"/>
