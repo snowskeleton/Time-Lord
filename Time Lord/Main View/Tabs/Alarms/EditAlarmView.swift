@@ -9,8 +9,11 @@ import SwiftUI
 struct EditAlarmView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Routine.entity(), sortDescriptors: []) var routines: FetchedResults<Routine>
+
 
     @State private var alarm: Alarm?
+//    @State private var routines: [Routine]
     @State private var time = Date()
     var hours: Int {
         let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
