@@ -91,6 +91,7 @@ struct EditAlarmView: View {
             .navigationBarHidden(true)
         }
     }
+    
     fileprivate func save() {
         var alarm: Alarm
         if self.alarm == nil {
