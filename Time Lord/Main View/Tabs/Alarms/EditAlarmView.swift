@@ -70,6 +70,15 @@ struct EditAlarmView: View {
         if self.alarm == nil {
             alarm = Alarm(context: self.moc)
             alarm.id = UUID().uuidString
+            var idArray: [String] {
+                var set: [String] = []
+                for _ in 0...6 {
+                    let id = UUID().uuidString
+                    set.append(id)
+                }
+                return set
+            }
+            alarm.notificationIDs = idArray
         } else {
             alarm = self.alarm!
         }
@@ -79,52 +88,24 @@ struct EditAlarmView: View {
         alarm.snooze = snooze
         alarm.hours = Int64(hours)
         alarm.minutes = Int64(minutes)
-        var idArray: [String] {
-            var set: [String] = []
-            for _ in 0...6 {
-                let id = UUID().uuidString
-                set.append(id)
-            }
-            return set
-        }
-        alarm.notificationIDs = idArray
         try? self.moc.save()
+        LocalNotificationManager().removeNotifications(alarm.notificationIDs!)
         updateNotification(alarm)
     }
 
     public func updateNotification(_ alarm: FetchedResults<Alarm>.Element) {
-                let manager = LocalNotificationManager()
-                manager.notifications = [
-                    LocalNotificationManager.Notification(
-                        ids: alarm.notificationIDs!,
-                        title: (alarm.name == "" ? "Alarm" : alarm.name)!,
-                        datetime: DateComponents(
-                            calendar: Calendar.current,
-                            hour: Int(alarm.hours),
-                            minute: Int(alarm.minutes)),
-                        repeating: alarm.daysOfWeek!)
-                ]
-                manager.schedule()
-//            } else {
-//                let notificationID = UUID().uuidString
-//                alarm.notificationID?.append(notificationID)
-//                let manager = LocalNotificationManager()
-//                manager.notifications = [
-//                    LocalNotificationManager.Notification(
-//                        id: notificationID,
-//                        title: (alarm.name == "" ? "Alarm" : alarm.name)!,
-//                        datetime: DateComponents(
-//                            calendar: Calendar.current,
-//                            hour: Int(alarm.hours),
-//                            minute: Int(alarm.minutes)))
-//                ]
-//                manager.schedule()
-//            }
-
-        }
-
-
-    public func removeNotification(_ alarm: FetchedResults<Alarm>.Element) {
-        //
+        let manager = LocalNotificationManager()
+        manager.notifications = [
+            LocalNotificationManager.Notification(
+                ids: alarm.notificationIDs!,
+                title: (alarm.name == "" ? "Alarm" : alarm.name)!,
+                datetime: DateComponents(
+                    calendar: Calendar.current,
+                    hour: Int(alarm.hours),
+                    minute: Int(alarm.minutes)),
+                repeating: alarm.daysOfWeek!)
+        ]
+        manager.schedule()
     }
+
 }

@@ -73,6 +73,8 @@ struct AlarmView: View {
     fileprivate func deleteAlarm(at offsets: IndexSet) {
         for index in offsets {
             let alarm = alarms[index]
+            let notifIDs = alarm.notificationIDs
+            LocalNotificationManager().removeNotifications(notifIDs!) // you have to use a prevoiusly set variable instead of just sending alarm.notificationIDs, otherwise there's a chance that the async behavior of removeDeliveredNotifications will end up with nil after we delete the alarm object.
             moc.delete(alarm)
             try? self.moc.save()
         }

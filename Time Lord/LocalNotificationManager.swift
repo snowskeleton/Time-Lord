@@ -60,17 +60,17 @@ class LocalNotificationManager {
                 for id in notif.ids {
                     if notif.repeating[notif.ids.firstIndex(of: id)!] == true {
                         var day = notif.datetime
-                        day.weekday = notif.ids.firstIndex(of: id)! //add the specific weekday to the DateComponents
+                        day.weekday = notif.ids.firstIndex(of: id)! + 1 //add the specific weekday to the DateComponents //plus 1 to make array counting match up with weekday counting. Sunday is 1
 
                         let trigger = UNCalendarNotificationTrigger(dateMatching: day, repeats: true)
-                        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-                        scheduleNotification(request)
+                        scheduleNotification(UNNotificationRequest(identifier: id, content: content, trigger: trigger))
+                    } else {
+                        LocalNotificationManager().removeNotifications([id]) //else remove any notifications set for that day. probably not necessary, but I don't have enough confidance in the rest of my code.
                     }
                 }
             } else {
                 let trigger = UNCalendarNotificationTrigger(dateMatching: notif.datetime, repeats: false)
-                let request = UNNotificationRequest(identifier: notif.ids[0], content: content, trigger: trigger) //use the first notif id if not repeating. not super clean, but not sure what else to do.
-                scheduleNotification(request)
+                scheduleNotification(UNNotificationRequest(identifier: notif.ids[0], content: content, trigger: trigger))
             }
         }
     }
@@ -79,6 +79,10 @@ class LocalNotificationManager {
         UNUserNotificationCenter.current().add(request) { error in
             guard error == nil else { return }
         }
+    }
+
+    func removeNotifications(_ ids: [String]) {
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ids)
     }
 
 }
