@@ -11,9 +11,8 @@ struct EditAlarmView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Routine.entity(), sortDescriptors: []) var routines: FetchedResults<Routine>
 
-
     @State private var alarm: Alarm?
-//    @State private var routines: [Routine]
+    @State private var selectedRoutines: [Routine] = []
     @State private var time = Date()
     var hours: Int {
         let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
@@ -30,6 +29,7 @@ struct EditAlarmView: View {
 
     init(alarm: Binding<Alarm>) {
         _alarm = State(initialValue: alarm.wrappedValue)
+        _selectedRoutines = State(initialValue: alarm.routines.wrappedValue!)
         let calendar = Calendar.current
         let components = DateComponents(hour: Int(alarm.hours.wrappedValue), minute: Int(alarm.minutes.wrappedValue))
         _time = State(initialValue: calendar.date(from: components)!)
@@ -68,9 +68,11 @@ struct EditAlarmView: View {
 
                     TextField("Name", text: $name)
 
-                    Toggle(isOn: $snooze, label: {
-                        Text("Snooze")
-                    })
+                    NavigationLink(destination: RoutinePicker(selectedRoutines: Binding<[Routine]>.constant(selectedRoutines))) {
+                        HStack {
+                            Text("Routines")
+                        }
+                    }
 
                     if alarm != nil {
                         Section {
@@ -111,6 +113,7 @@ struct EditAlarmView: View {
         } else {
             alarm = self.alarm!
         }
+        alarm.routines = selectedRoutines
         alarm.daysOfWeek = daysOfWeek
         alarm.active = true
         alarm.name = name

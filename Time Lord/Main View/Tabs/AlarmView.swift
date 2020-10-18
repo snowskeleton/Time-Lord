@@ -16,11 +16,22 @@ struct AlarmView: View {
     @State private var edit = false
     @State private var showEditAlarm = false
     @State private var selectedAlarm = 0
+    @State private var showEditRoutine = false
 
     var body: some View {
         NavigationView {
             VStack {
                 HStack {
+                    Button(action: {
+                        showEditRoutine = true
+                    }) {
+                        Text("Routines")
+                            .padding(.leading)
+                    }
+                    .sheet(isPresented: $showEditRoutine) {
+                        EditRoutineView()
+                            .environment(\.managedObjectContext, self.moc)
+                    }
                     Spacer()
                     Button(action: {
                         showAddAlarm = true

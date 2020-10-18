@@ -7,14 +7,28 @@
 
 import SwiftUI
 
-struct RoutinePickerr: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+struct RoutinePicker: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Routine.entity(), sortDescriptors: []) var routines: FetchedResults<Routine>
 
-struct RoutinePickerr_Previews: PreviewProvider {
-    static var previews: some View {
-        RoutinePickerr()
+    @Binding var selectedRoutines: [Routine]
+
+    var body: some View {
+        List {
+            ForEach(routines, id: \.self) { routine in
+                Button(action: {
+                    selectedRoutines.append(routine)
+                }) {
+                    HStack {
+                        Text("\(routine.name!)")
+                        if selectedRoutines.contains(routine) {
+                            Spacer()
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
