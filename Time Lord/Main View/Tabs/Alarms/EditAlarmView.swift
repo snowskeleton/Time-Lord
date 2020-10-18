@@ -114,7 +114,6 @@ struct EditAlarmView: View {
         alarm.daysOfWeek = daysOfWeek
         alarm.active = true
         alarm.name = name
-        alarm.snooze = snooze
         let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
         alarm.hours = Int64(actualTime.hour!)
         alarm.minutes = Int64(actualTime.minute!)
