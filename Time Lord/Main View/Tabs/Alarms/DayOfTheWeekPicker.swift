@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DayOfTheWeekPicker: View {
     @Binding var activeDays: [Bool]
-    @State private var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     var allWeekDaysSelected: Bool {
         for i in 1...5 { if activeDays[i] == false { return false } }
         return true
