@@ -25,7 +25,6 @@
 		808BA0A92524E568005F7D91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808BA0A72524E568005F7D91 /* LaunchScreen.storyboard */; };
 		808BA0B42524E568005F7D91 /* Time_LordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0B32524E568005F7D91 /* Time_LordTests.swift */; };
 		808BA0BF2524E568005F7D91 /* Time_LordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0BE2524E568005F7D91 /* Time_LordUITests.swift */; };
-		80ACA1432533937D0073B44D /* TimeEditPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ACA1422533937D0073B44D /* TimeEditPicker.swift */; };
 		80ACA14A25339F8A0073B44D /* Alarm+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ACA14825339F8A0073B44D /* Alarm+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +70,6 @@
 		808BA0BA2524E568005F7D91 /* Time LordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Time LordUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		808BA0BE2524E568005F7D91 /* Time_LordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_LordUITests.swift; sourceTree = "<group>"; };
 		808BA0C02524E568005F7D91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80ACA1422533937D0073B44D /* TimeEditPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEditPicker.swift; sourceTree = "<group>"; };
 		80ACA14825339F8A0073B44D /* Alarm+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,7 +205,6 @@
 		80ACA1472533995C0073B44D /* Pieces */ = {
 			isa = PBXGroup;
 			children = (
-				80ACA1422533937D0073B44D /* TimeEditPicker.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -356,7 +353,6 @@
 				80221B5D25253D85003951D5 /* StopwatchView.swift in Sources */,
 				80221B582524F6D5003951D5 /* AlarmView.swift in Sources */,
 				808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */,
-				80ACA1432533937D0073B44D /* TimeEditPicker.swift in Sources */,
 				804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */,
 				8026AAFE2538F07000033E63 /* LocalNotificationManager.swift in Sources */,
 				80221B752525437E003951D5 /* EditAlarmView.swift in Sources */,

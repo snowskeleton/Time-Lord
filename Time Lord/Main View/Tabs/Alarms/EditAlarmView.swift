@@ -11,8 +11,15 @@ struct EditAlarmView: View {
     @Environment(\.managedObjectContext) var moc
 
     @State private var alarm: Alarm?
-    @State private var hours = Calendar.current.component(.hour, from: Date())
-    @State private var minutes = Calendar.current.component(.minute, from: Date())
+    @State private var time = Date()
+    var hours: Int {
+        let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
+        return actualTime.hour!
+    }
+    var minutes: Int {
+        let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
+        return actualTime.minute!
+    }
     @State private var name: String = ""
     @State private var snooze = false
     @State var daysOfWeek: [Bool] = [false, false, false, false, false, false, false]
@@ -20,8 +27,11 @@ struct EditAlarmView: View {
 
     init(alarm: Binding<Alarm>) {
         _alarm = State(initialValue: alarm.wrappedValue)
-        _hours = State(initialValue: Int(alarm.hours.wrappedValue))
-        _minutes = State(initialValue: Int(alarm.minutes.wrappedValue))
+        let calendar = Calendar.current
+        let components = DateComponents(hour: Int(alarm.hours.wrappedValue), minute: Int(alarm.minutes.wrappedValue))
+        _time = State(initialValue: calendar.date(from: components)!)
+//        _hours = State(initialValue: Int(alarm.hours.wrappedValue))
+//        _minutes = State(initialValue: Int(alarm.minutes.wrappedValue))
         _name = State(initialValue: alarm.name.wrappedValue ?? "")
         _snooze = State(initialValue: alarm.snooze.wrappedValue)
         _daysOfWeek = State<[Bool]>(initialValue: alarm.daysOfWeek.wrappedValue!)
@@ -43,7 +53,10 @@ struct EditAlarmView: View {
                     }.padding(.trailing)
                 }
 
-                TimeEditPicker(selectedHour: $hours, selectedMinute: $minutes)
+                DatePicker("Date",
+                           selection: $time, displayedComponents: .hourAndMinute)
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .labelsHidden()
 
                 Form {
 
@@ -101,8 +114,9 @@ struct EditAlarmView: View {
         alarm.active = true
         alarm.name = name
         alarm.snooze = snooze
-        alarm.hours = Int64(hours)
-        alarm.minutes = Int64(minutes)
+        let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
+        alarm.hours = Int64(actualTime.hour!)
+        alarm.minutes = Int64(actualTime.minute!)
         try? self.moc.save()
         LocalNotificationManager().removeNotifications(alarm.notificationIDs!)
         updateNotification(alarm)
