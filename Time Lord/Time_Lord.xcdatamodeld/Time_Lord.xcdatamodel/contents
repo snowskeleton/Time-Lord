@@ -13,18 +13,22 @@
         <attribute name="minutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="notificationIDs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="&quot;&quot;" customClassName="[String]"/>
+        <attribute name="routines" optional="YES" attributeType="Transformable" customClassName="[Routines]"/>
         <attribute name="snooze" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
-        <relationship name="after" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="After"/>
-        <relationship name="before" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Before"/>
     </entity>
     <entity name="Before" representedClassName="Before" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" customClassName="[Int]"/>
         <attribute name="note" optional="YES" attributeType="String" defaultValueString="minutes before" customClassName="[Int]"/>
     </entity>
+    <entity name="Routines" representedClassName="Routines" syncable="YES" codeGenerationType="class">
+        <relationship name="after" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="After"/>
+        <relationship name="before" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Before"/>
+    </entity>
     <elements>
-        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="223"/>
-        <element name="Before" positionX="-63" positionY="54" width="128" height="73"/>
-        <element name="After" positionX="-54" positionY="63" width="128" height="73"/>
+        <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="208"/>
+        <element name="Before" positionX="-103.203125" positionY="-36.828125" width="128" height="73"/>
+        <element name="After" positionX="-106.6640625" positionY="-163.0859375" width="128" height="73"/>
+        <element name="Routines" positionX="-180" positionY="-54" width="128" height="73"/>
     </elements>
 </model>
