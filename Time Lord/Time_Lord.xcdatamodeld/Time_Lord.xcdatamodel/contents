@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="After" representedClassName="After" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" defaultValueString="minutes after"/>
+    </entity>
     <entity name="Alarm" representedClassName="Alarm" syncable="YES" codeGenerationType="category">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Bool]"/>
@@ -11,8 +15,16 @@
         <attribute name="notificationIDs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="&quot;&quot;" customClassName="[String]"/>
         <attribute name="snooze" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <relationship name="after" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="After"/>
+        <relationship name="before" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Before"/>
+    </entity>
+    <entity name="Before" representedClassName="Before" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" customClassName="[Int]"/>
+        <attribute name="note" optional="YES" attributeType="String" defaultValueString="minutes before" customClassName="[Int]"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="Before" positionX="-63" positionY="54" width="128" height="73"/>
+        <element name="After" positionX="-54" positionY="63" width="128" height="73"/>
     </elements>
 </model>
