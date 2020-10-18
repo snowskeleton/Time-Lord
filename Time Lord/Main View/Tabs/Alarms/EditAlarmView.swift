@@ -59,8 +59,23 @@ struct EditAlarmView: View {
                         Text("Snooze")
                     })
 
+                    if alarm != nil {
+                        Section {
+                            Button(action: {
+                                self.moc.delete(alarm!)
+                                self.presentationMode.wrappedValue.dismiss()
+                            }) {
+                                HStack {
+                                    Spacer()
+                                    Text("Delete")
+                                        .foregroundColor(Color.red)
+                                    Spacer()
+                                }
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
                 }
-                Spacer()
             }
             .navigationBarHidden(true)
         }
