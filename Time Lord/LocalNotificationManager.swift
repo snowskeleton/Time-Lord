@@ -66,7 +66,7 @@ class LocalNotificationManager {
             if notif.isSingle { //if not repeating on any day
                 for id in notif.ids {
                     let selectedDay = notif.ids.firstIndex(of: id)!
-                    if notif.repeating[selectedDay] == true {
+                    if notif.repeating[selectedDay] {
                         var day = notif.datetime
                         day.weekday = selectedDay + 1 //add the specific weekday to the DateComponents //plus 1 to make array counting match up with weekday counting. Monday is 2
 
