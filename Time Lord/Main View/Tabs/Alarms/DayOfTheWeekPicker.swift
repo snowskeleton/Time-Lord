@@ -35,30 +35,39 @@ struct DayOfTheWeekPicker: View {
                 }
             }
             Button(action: {
-                if allWeekDaysSelected {
-                    for i in 1...5 {
-                        activeDays[i] = false
-                    }
-                } else {
-                    for i in 1...5 {
-                        activeDays[i] = true
-                    }
-                }
+                toggleWeekdays()
             }) {
                 Text("Weekdays")
             }
             Button(action: {
-                if allWeekEndsSelected {
-                    activeDays[0] = false
-                    activeDays[6] = false
-                } else {
-                    activeDays[0] = true
-                    activeDays[6] = true
-                }
+                toggleWeekends()
             }) {
                 Text("Weekends")
             }
         }
     }
+
+    fileprivate func toggleWeekdays() {
+        if allWeekDaysSelected {
+            for i in 1...5 {
+                activeDays[i] = false
+            }
+        } else {
+            for i in 1...5 {
+                activeDays[i] = true
+            }
+        }
+    }
+
+    fileprivate func toggleWeekends() {
+        if allWeekEndsSelected {
+            activeDays[0] = false
+            activeDays[6] = false
+        } else {
+            activeDays[0] = true
+            activeDays[6] = true
+        }
+    }
+
 }
 
