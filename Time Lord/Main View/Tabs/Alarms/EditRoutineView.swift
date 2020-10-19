@@ -89,10 +89,13 @@ struct EditRoutineView: View {
                 }
 
             }.navigationTitle("New Routine")
+            .navigationBarItems(trailing: Button("Save") {
+                save()
+            })
         }
     }
 
-    private func appendBefore() {
+    fileprivate func appendBefore() {
         let new = Int(newBefore)!
         if !befores.contains(new) { befores.append(new) }
         befores.sort()
@@ -100,12 +103,20 @@ struct EditRoutineView: View {
         newBefore = ""
     }
 
-    private func appendAfter() {
+    fileprivate func appendAfter() {
         let new = Int(newAfter)!
         if !afters.contains(new) { afters.append(new) }
         afters.sort()
         addNewAfter = false
         newAfter = ""
+    }
+
+    fileprivate func save() {
+        let routine = Routine(context: self.moc)
+        routine.befores = befores
+        routine.afters = afters
+        try? self.moc.save()
+        self.presentationMode.wrappedValue.dismiss()
     }
 
 }

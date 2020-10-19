@@ -16,20 +16,20 @@ struct AlarmView: View {
     @State private var edit = false
     @State private var showEditAlarm = false
     @State private var selectedAlarm = 0
-    @State private var showEditRoutine = false
+    @State private var showRoutinesView = false
 
     var body: some View {
         NavigationView {
             VStack {
                 HStack {
                     Button(action: {
-                        showEditRoutine = true
+                        showRoutinesView = true
                     }) {
                         Text("Routines")
                             .padding(.leading)
                     }
-                    .sheet(isPresented: $showEditRoutine) {
-                        EditRoutineView()
+                    .sheet(isPresented: $showRoutinesView) {
+                        RoutinesView()
                             .environment(\.managedObjectContext, self.moc)
                     }
                     Spacer()
