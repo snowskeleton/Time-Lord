@@ -77,7 +77,10 @@ struct EditAlarmView: View {
                     if alarm != nil {
                         Section {
                             Button(action: {
+                                let notifIDs = alarm!.notificationIDs
+                                LocalNotificationManager().removeNotifications(notifIDs!)
                                 self.moc.delete(alarm!)
+                                try? self.moc.save()
                                 self.presentationMode.wrappedValue.dismiss()
                             }) {
                                 HStack {
