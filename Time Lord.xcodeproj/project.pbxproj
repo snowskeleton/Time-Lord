@@ -18,6 +18,7 @@
 		804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */; };
 		8051F95C253CE1A700D68B17 /* RoutinePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051F95B253CE1A700D68B17 /* RoutinePicker.swift */; };
 		8051F964253CE55400D68B17 /* EditRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051F963253CE55400D68B17 /* EditRoutineView.swift */; };
+		8051F969253E2A3A00D68B17 /* RoutinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051F968253E2A3A00D68B17 /* RoutinesView.swift */; };
 		8087AD30253CDF7E00968B13 /* Routine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087AD2A253CDF7E00968B13 /* Routine+CoreDataClass.swift */; };
 		8087AD32253CDF7E00968B13 /* Before+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087AD2C253CDF7E00968B13 /* Before+CoreDataClass.swift */; };
 		8087AD34253CDF7E00968B13 /* After+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087AD2E253CDF7E00968B13 /* After+CoreDataClass.swift */; };
@@ -62,6 +63,7 @@
 		804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesDateFormatter.swift; sourceTree = "<group>"; };
 		8051F95B253CE1A700D68B17 /* RoutinePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePicker.swift; sourceTree = "<group>"; };
 		8051F963253CE55400D68B17 /* EditRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineView.swift; sourceTree = "<group>"; };
+		8051F968253E2A3A00D68B17 /* RoutinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesView.swift; sourceTree = "<group>"; };
 		8087AD2A253CDF7E00968B13 /* Routine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8087AD2C253CDF7E00968B13 /* Before+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Before+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8087AD2E253CDF7E00968B13 /* After+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "After+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */,
 				80221B742525437E003951D5 /* EditAlarmView.swift */,
+				8051F968253E2A3A00D68B17 /* RoutinesView.swift */,
 				8051F95B253CE1A700D68B17 /* RoutinePicker.swift */,
 				8051F963253CE55400D68B17 /* EditRoutineView.swift */,
 			);
@@ -371,6 +374,7 @@
 				80221B5D25253D85003951D5 /* StopwatchView.swift in Sources */,
 				80221B582524F6D5003951D5 /* AlarmView.swift in Sources */,
 				8087AD30253CDF7E00968B13 /* Routine+CoreDataClass.swift in Sources */,
+				8051F969253E2A3A00D68B17 /* RoutinesView.swift in Sources */,
 				808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */,
 				804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */,
 				8026AAFE2538F07000033E63 /* LocalNotificationManager.swift in Sources */,
