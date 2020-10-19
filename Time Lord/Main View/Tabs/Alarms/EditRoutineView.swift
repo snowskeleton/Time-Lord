@@ -32,7 +32,7 @@ struct EditRoutineView: View {
             Form {
 
                 TextField("Name", text: $name)
-                
+
                 Section {
 
                     HStack {
