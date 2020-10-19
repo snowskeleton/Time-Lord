@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="After" representedClassName="After" syncable="YES" codeGenerationType="category">
-        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine"/>
-    </entity>
     <entity name="Alarm" representedClassName="Alarm" syncable="YES" codeGenerationType="category">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Bool]"/>
@@ -16,19 +12,13 @@
         <attribute name="routines" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Routine]"/>
         <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
     </entity>
-    <entity name="Before" representedClassName="Before" syncable="YES" codeGenerationType="category">
-        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" customClassName="[Int]"/>
-        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine"/>
-    </entity>
     <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="category">
-        <attribute name="afters" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[After]"/>
-        <attribute name="befores" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Before]"/>
+        <attribute name="afters" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="befores" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString=""/>
     </entity>
     <elements>
-        <element name="After" positionX="-106.6640625" positionY="-163.0859375" width="128" height="73"/>
         <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="193"/>
-        <element name="Before" positionX="-103.203125" positionY="-36.828125" width="128" height="73"/>
         <element name="Routine" positionX="-180" positionY="-54" width="128" height="88"/>
     </elements>
 </model>
