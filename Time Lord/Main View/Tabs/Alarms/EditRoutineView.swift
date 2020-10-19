@@ -22,6 +22,7 @@ struct EditRoutineView: View {
 
     init(routine: Binding<Routine>) {
         _routine = State(initialValue: routine.wrappedValue)
+        _name = State(initialValue: routine.name.wrappedValue!)
         _befores = State(initialValue: routine.befores.wrappedValue!)
         _afters = State(initialValue: routine.afters.wrappedValue!)
     }
