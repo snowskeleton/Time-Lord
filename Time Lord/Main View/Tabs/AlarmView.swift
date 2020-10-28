@@ -12,6 +12,11 @@ struct AlarmView: View {
     @FetchRequest(entity: Alarm.entity(),
                   sortDescriptors: [NSSortDescriptor(key: "hours", ascending: true),
                                     NSSortDescriptor(key: "minutes", ascending: true)]) var alarms: FetchedResults<Alarm>
+//    var alarms: [Alarm] {
+//        let new = Alarm(context: self.moc)
+//        let old = Alarm(context: self.moc)
+//        return [new, old]
+//    }
     @State private var showAddAlarm = false
     @State private var edit = false
     @State private var showEditAlarm = false
@@ -22,16 +27,6 @@ struct AlarmView: View {
         NavigationView {
             VStack {
                 HStack {
-                    Button(action: {
-                        showRoutinesView = true
-                    }) {
-                        Text("Routines")
-                            .padding(.leading)
-                    }
-                    .sheet(isPresented: $showRoutinesView) {
-                        RoutinesView()
-                            .environment(\.managedObjectContext, self.moc)
-                    }
                     Spacer()
                     Button(action: {
                         showAddAlarm = true

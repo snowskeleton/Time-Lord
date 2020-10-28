@@ -16,10 +16,7 @@
 		80221B8225262A9C003951D5 /* DayOfTheWeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */; };
 		8026AAFE2538F07000033E63 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026AAFD2538F07000033E63 /* LocalNotificationManager.swift */; };
 		804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */; };
-		8051F95C253CE1A700D68B17 /* RoutinePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051F95B253CE1A700D68B17 /* RoutinePicker.swift */; };
 		8051F964253CE55400D68B17 /* EditRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051F963253CE55400D68B17 /* EditRoutineView.swift */; };
-		8051F969253E2A3A00D68B17 /* RoutinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051F968253E2A3A00D68B17 /* RoutinesView.swift */; };
-		8087AD30253CDF7E00968B13 /* Routine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087AD2A253CDF7E00968B13 /* Routine+CoreDataClass.swift */; };
 		808BA09A2524E567005F7D91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA0992524E567005F7D91 /* AppDelegate.swift */; };
 		808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09B2524E567005F7D91 /* SceneDelegate.swift */; };
 		808BA09E2524E567005F7D91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808BA09D2524E567005F7D91 /* ContentView.swift */; };
@@ -59,10 +56,7 @@
 		80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeekPicker.swift; sourceTree = "<group>"; };
 		8026AAFD2538F07000033E63 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		804C6B4325264C140024FD38 /* HoursAndMinutesDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesDateFormatter.swift; sourceTree = "<group>"; };
-		8051F95B253CE1A700D68B17 /* RoutinePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePicker.swift; sourceTree = "<group>"; };
 		8051F963253CE55400D68B17 /* EditRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineView.swift; sourceTree = "<group>"; };
-		8051F968253E2A3A00D68B17 /* RoutinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesView.swift; sourceTree = "<group>"; };
-		8087AD2A253CDF7E00968B13 /* Routine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		808BA0962524E567005F7D91 /* Time Lord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Lord.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		808BA0992524E567005F7D91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		808BA09B2524E567005F7D91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,8 +103,8 @@
 		80221B7E25262A67003951D5 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
-				80221B7F25262A71003951D5 /* Tabs */,
 				808BA09D2524E567005F7D91 /* ContentView.swift */,
+				80221B7F25262A71003951D5 /* Tabs */,
 				80ACA1472533995C0073B44D /* Pieces */,
 			);
 			path = "Main View";
@@ -133,8 +127,6 @@
 			children = (
 				80221B8125262A9C003951D5 /* DayOfTheWeekPicker.swift */,
 				80221B742525437E003951D5 /* EditAlarmView.swift */,
-				8051F968253E2A3A00D68B17 /* RoutinesView.swift */,
-				8051F95B253CE1A700D68B17 /* RoutinePicker.swift */,
 				8051F963253CE55400D68B17 /* EditRoutineView.swift */,
 			);
 			path = Alarms;
@@ -152,7 +144,6 @@
 		808BA08D2524E567005F7D91 = {
 			isa = PBXGroup;
 			children = (
-				8087AD2A253CDF7E00968B13 /* Routine+CoreDataClass.swift */,
 				80ACA14825339F8A0073B44D /* Alarm+CoreDataClass.swift */,
 				808BA0982524E567005F7D91 /* Time Lord */,
 				808BA0B22524E568005F7D91 /* Time LordTests */,
@@ -362,11 +353,8 @@
 				80221B6B25253DAA003951D5 /* SettingsView.swift in Sources */,
 				808BA09A2524E567005F7D91 /* AppDelegate.swift in Sources */,
 				808BA0A12524E567005F7D91 /* Time_Lord.xcdatamodeld in Sources */,
-				8051F95C253CE1A700D68B17 /* RoutinePicker.swift in Sources */,
 				80221B5D25253D85003951D5 /* StopwatchView.swift in Sources */,
 				80221B582524F6D5003951D5 /* AlarmView.swift in Sources */,
-				8087AD30253CDF7E00968B13 /* Routine+CoreDataClass.swift in Sources */,
-				8051F969253E2A3A00D68B17 /* RoutinesView.swift in Sources */,
 				808BA09C2524E567005F7D91 /* SceneDelegate.swift in Sources */,
 				804C6B4425264C140024FD38 /* HoursAndMinutesDateFormatter.swift in Sources */,
 				8026AAFE2538F07000033E63 /* LocalNotificationManager.swift in Sources */,

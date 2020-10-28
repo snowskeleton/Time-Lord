@@ -11,28 +11,21 @@ struct EditRoutineView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
 
-    @State private var routine: Routine?
-    @State private var befores: [Int] = []
-    @State private var afters: [Int] = []
+    @Binding var befores: [Before]
+    @Binding var afters: [After]
     @State private var addNewBefore = false
     @State private var newBefore = ""
     @State private var addNewAfter = false
     @State private var newAfter = ""
-    @State private var name = ""
 
-    init(routine: Binding<Routine>) {
-        _routine = State(initialValue: routine.wrappedValue)
-        _name = State(initialValue: routine.name.wrappedValue!)
-        _befores = State(initialValue: routine.befores.wrappedValue!)
-        _afters = State(initialValue: routine.afters.wrappedValue!)
+    init(befores: Binding<[Before]>, afters: Binding<[After]>) {
+        _befores = befores
+        _afters = afters
     }
-    init() {}
 
     var body: some View {
         NavigationView {
             Form {
-
-                TextField("Name", text: $name)
 
                 Section {
 
@@ -47,7 +40,7 @@ struct EditRoutineView: View {
                     List {
                         ForEach(befores, id: \.self) { before in
                             HStack {
-                                Text(" -\(before)")
+                                Text("\(before.offset)")
                                 Spacer()
                                 Button(action: {
                                     let index = befores.firstIndex(of: before)
@@ -74,7 +67,7 @@ struct EditRoutineView: View {
 
                     ForEach(afters, id: \.self) { after in
                         HStack {
-                            Text(" +\(after)")
+                            Text("+\(after.offset)")
                             Spacer()
                             Button(action: {
                                 let index = afters.firstIndex(of: after)
@@ -88,35 +81,37 @@ struct EditRoutineView: View {
 
                 }
 
-            }.navigationTitle("New Routine")
-            .navigationBarItems(trailing: Button("Save") {
-                save()
-            })
+            }.navigationTitle("Routine")
+            .navigationBarHidden(true)
         }
     }
 
     fileprivate func appendBefore() {
-        let new = Int(newBefore)!
-        if !befores.contains(new) { befores.append(new) }
-        befores.sort()
+        if Int64(newBefore) == nil { return } //so we can safely force unwrap later
+        for i in befores {
+            if abs(i.offset) == Int64(newBefore) { return }
+        }
+
+        let new = Before(context: self.moc)
+        new.offset = -Int64(newBefore)!
+        befores.append(new)
+        befores.sort(by: { $0.offset < $1.offset } )
         addNewBefore = false
         newBefore = ""
     }
 
     fileprivate func appendAfter() {
-        let new = Int(newAfter)!
-        if !afters.contains(new) { afters.append(new) }
-        afters.sort()
+        if Int64(newAfter) == nil { return } //so we can safely force unwrap later
+        for i in afters {
+            if abs(i.offset) == Int64(newAfter) { return }
+        }
+
+        let new = After(context: self.moc)
+        new.offset = +Int64(newAfter)!
+        afters.append(new)
+        afters.sort(by: { $0.offset < $1.offset } )
         addNewAfter = false
         newAfter = ""
-    }
-
-    fileprivate func save() {
-        let routine = Routine(context: self.moc)
-        routine.befores = befores
-        routine.afters = afters
-        try? self.moc.save()
-        self.presentationMode.wrappedValue.dismiss()
     }
 
 }

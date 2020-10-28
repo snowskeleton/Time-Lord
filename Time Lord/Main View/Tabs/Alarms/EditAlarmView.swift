@@ -9,10 +9,11 @@ import SwiftUI
 struct EditAlarmView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Routine.entity(), sortDescriptors: []) var routines: FetchedResults<Routine>
+//    @FetchRequest(entity: Routine.entity(), sortDescriptors: []) var routines: FetchedResults<Routine>
 
     @State private var alarm: Alarm?
-    @State private var selectedRoutines: [Routine] = []
+    @State var befores: [Before] = []
+    @State var afters: [After] = []
     @State private var time = Date()
     var hours: Int {
         let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
@@ -29,7 +30,8 @@ struct EditAlarmView: View {
 
     init(alarm: Binding<Alarm>) {
         _alarm = State(initialValue: alarm.wrappedValue)
-        _selectedRoutines = State(initialValue: alarm.routines.wrappedValue!)
+        _befores = State(initialValue: alarm.befores.wrappedValue!)
+        _afters = State(initialValue: alarm.afters.wrappedValue!)
         let calendar = Calendar.current
         let components = DateComponents(
             hour: Int(alarm.hours.wrappedValue),
@@ -70,9 +72,10 @@ struct EditAlarmView: View {
 
                     TextField("Name", text: $name)
 
-                    NavigationLink(destination: RoutinePicker(selectedRoutines: Binding<[Routine]>.constant(selectedRoutines))) {
+                    NavigationLink(destination: EditRoutineView(befores: $befores, afters: $afters)) {
                         HStack {
                             Text("Routines")
+                            Text(beforesAndAftersAsString())
                         }
                     }
 
@@ -118,13 +121,14 @@ struct EditAlarmView: View {
         } else {
             alarm = self.alarm!
         }
-        alarm.routines = selectedRoutines
         alarm.daysOfWeek = daysOfWeek
         alarm.active = true
         alarm.name = name
         let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
         alarm.hours = Int64(actualTime.hour!)
         alarm.minutes = Int64(actualTime.minute!)
+        alarm.befores = befores
+        alarm.afters = afters
         try? self.moc.save()
         LocalNotificationManager().removeNotifications(alarm.notificationIDs!)
         updateNotification(alarm)
@@ -143,6 +147,33 @@ struct EditAlarmView: View {
                 repeating: alarm.daysOfWeek!)
         ]
         manager.schedule()
+    }
+
+    func beforesAndAftersAsString() -> String {
+        var thing: [String] = []
+
+        var i = 0
+        count: for before in befores {
+            if i < 3 {
+                thing.append("\(before.offset)")
+            } else {
+                thing.append("...")
+                break count
+            }
+            i += 1
+        }
+
+        i = 0
+        count: for after in afters {
+            if i < 3 {
+                thing.append("+\(after.offset)")
+            } else {
+                thing.append("...")
+                break count
+            }
+            i += 1
+        }
+        return thing.joined(separator: ", ")
     }
 
 }
