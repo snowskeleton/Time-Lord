@@ -9,7 +9,6 @@ import SwiftUI
 struct EditAlarmView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
-//    @FetchRequest(entity: Routine.entity(), sortDescriptors: []) var routines: FetchedResults<Routine>
 
     @State private var alarm: Alarm?
     @State var befores: [Before] = []

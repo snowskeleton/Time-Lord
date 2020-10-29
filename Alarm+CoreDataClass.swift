@@ -14,7 +14,7 @@ public class Alarm: NSManagedObject {
     func weekDaysAsString() -> String {
         var addWeekdays = true
         var addWeekends = true
-        let days = [false, false, false, false, false, false, false]//daysOfWeek!
+        let days = daysOfWeek!
         var daysOfWeekString: [String] = []
 
         if days == [false, false, false, false, false, false, false] {

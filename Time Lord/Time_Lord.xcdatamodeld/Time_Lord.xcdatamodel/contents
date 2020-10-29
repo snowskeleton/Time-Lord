@@ -6,8 +6,8 @@
     </entity>
     <entity name="Alarm" representedClassName="Alarm" syncable="YES" codeGenerationType="category">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="afters" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[After]"/>
-        <attribute name="befores" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Before]"/>
+        <attribute name="afters" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[After]"/>
+        <attribute name="befores" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[Before]"/>
         <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Bool]"/>
         <attribute name="hours" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
@@ -22,8 +22,8 @@
         <attribute name="offset" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="After" positionX="-225" positionY="-63" width="128" height="73"/>
-        <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="208"/>
-        <element name="Before" positionX="-234" positionY="-72" width="128" height="73"/>
+        <element name="After" positionX="26.421875" positionY="30.80859375" width="128" height="73"/>
+        <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="28"/>
+        <element name="Before" positionX="54.65625" positionY="-96.74609375" width="128" height="73"/>
     </elements>
 </model>
