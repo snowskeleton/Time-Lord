@@ -11,8 +11,8 @@ struct EditAlarmView: View {
     @Environment(\.managedObjectContext) var moc
 
     @State private var alarm: Alarm?
-    @State var befores: [Before] = []
-    @State var afters: [After] = []
+    @State var befores: [Int] = []
+    @State var afters: [Int] = []
     @State private var time = Date()
     var hours: Int {
         let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
@@ -29,8 +29,8 @@ struct EditAlarmView: View {
 
     init(alarm: Binding<Alarm>) {
         _alarm = State(initialValue: alarm.wrappedValue)
-        _befores = State(initialValue: alarm.befores.wrappedValue!)
-        _afters = State(initialValue: alarm.afters.wrappedValue!)
+        _befores = State(initialValue: (alarm.wrappedValue).beforeInts())
+        _afters = State(initialValue: (alarm.wrappedValue).afterInts())
         let calendar = Calendar.current
         let components = DateComponents(
             hour: Int(alarm.hours.wrappedValue),
@@ -105,31 +105,47 @@ struct EditAlarmView: View {
     
     fileprivate func save() {
         var alarm: Alarm
-        if self.alarm == nil {
+        if self.alarm != nil {
+            alarm = self.alarm!
+            let notifIDs = alarm.allNotificationIDs()
+            LocalNotificationManager().removeNotifications(notifIDs)
+        } else {
             alarm = Alarm(context: self.moc)
             alarm.id = UUID().uuidString
-            var idArray: [String] {
-                var set: [String] = []
-                for _ in 0...6 {
-                    let id = UUID().uuidString
-                    set.append(id)
-                }
-                return set
-            }
-            alarm.notificationIDs = idArray
-        } else {
-            alarm = self.alarm!
         }
+
+        alarm.notificationIDs = { () -> [String] in
+            var set: [String] = []
+            for _ in 0...6 {
+                let id = UUID().uuidString
+                set.append(id)
+            }
+            return set
+        }()
         alarm.daysOfWeek = daysOfWeek
         alarm.active = true
         alarm.name = name
         let actualTime = Calendar.current.dateComponents([.hour, .minute], from: time)
         alarm.hours = Int64(actualTime.hour!)
         alarm.minutes = Int64(actualTime.minute!)
-        alarm.befores = befores
-        alarm.afters = afters
+
+        alarm.befores = nil
+        for i in befores {
+            let before = Before(context: self.moc)
+            before.offset = Int64(i)
+            before.notificationID = UUID().uuidString
+            before.alarm = alarm
+        }
+        alarm.afters = nil
+        for i in afters {
+            let after = After(context: self.moc)
+            after.offset = Int64(i)
+            after.notificationID = UUID().uuidString
+            after.alarm = alarm
+        }
+
         try? self.moc.save()
-        LocalNotificationManager().removeNotifications(alarm.notificationIDs!)
+
         updateNotification(alarm)
     }
 
@@ -154,7 +170,7 @@ struct EditAlarmView: View {
         var i = 0
         count: for before in befores {
             if i < 3 {
-                thing.append("\(before.offset)")
+                thing.append("\(before)")
             } else {
                 thing.append("...")
                 break count
@@ -165,7 +181,7 @@ struct EditAlarmView: View {
         i = 0
         count: for after in afters {
             if i < 3 {
-                thing.append("+\(after.offset)")
+                thing.append("+\(after)")
             } else {
                 thing.append("...")
                 break count

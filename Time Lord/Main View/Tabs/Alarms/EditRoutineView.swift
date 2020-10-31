@@ -11,14 +11,14 @@ struct EditRoutineView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
 
-    @Binding var befores: [Before]
-    @Binding var afters: [After]
+    @Binding var befores: [Int]
+    @Binding var afters: [Int]
     @State private var addNewBefore = false
     @State private var newBefore = ""
     @State private var addNewAfter = false
     @State private var newAfter = ""
 
-    init(befores: Binding<[Before]>, afters: Binding<[After]>) {
+    init(befores: Binding<[Int]>, afters: Binding<[Int]>) {
         _befores = befores
         _afters = afters
     }
@@ -40,7 +40,7 @@ struct EditRoutineView: View {
                     List {
                         ForEach(befores, id: \.self) { before in
                             HStack {
-                                Text("\(before.offset)")
+                                Text("\(before)")
                                 Spacer()
                                 Button(action: {
                                     let index = befores.firstIndex(of: before)
@@ -67,7 +67,7 @@ struct EditRoutineView: View {
 
                     ForEach(afters, id: \.self) { after in
                         HStack {
-                            Text("+\(after.offset)")
+                            Text("+\(after)")
                             Spacer()
                             Button(action: {
                                 let index = afters.firstIndex(of: after)
@@ -89,13 +89,11 @@ struct EditRoutineView: View {
     fileprivate func appendBefore() {
         if Int64(newBefore) == nil { return } //so we can safely force unwrap later
         for i in befores {
-            if abs(i.offset) == Int64(newBefore) { return }
+            if abs(i) == Int(newBefore) { return }
         }
 
-        let new = Before(context: self.moc)
-        new.offset = -Int64(newBefore)!
-        befores.append(new)
-        befores.sort(by: { $0.offset < $1.offset } )
+        befores.append(-Int(newBefore)!)
+        befores.sort(by: { $0 < $1 } )
         addNewBefore = false
         newBefore = ""
     }
@@ -103,13 +101,11 @@ struct EditRoutineView: View {
     fileprivate func appendAfter() {
         if Int64(newAfter) == nil { return } //so we can safely force unwrap later
         for i in afters {
-            if abs(i.offset) == Int64(newAfter) { return }
+            if abs(i) == Int(newAfter) { return }
         }
 
-        let new = After(context: self.moc)
-        new.offset = +Int64(newAfter)!
-        afters.append(new)
-        afters.sort(by: { $0.offset < $1.offset } )
+        afters.append(Int(newAfter)!)
+        afters.sort(by: { $0 < $1 } )
         addNewAfter = false
         newAfter = ""
     }

@@ -3,11 +3,10 @@
     <entity name="After" representedClassName="After" syncable="YES" codeGenerationType="class">
         <attribute name="notificationID" optional="YES" attributeType="String"/>
         <attribute name="offset" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="afters" inverseEntity="Alarm"/>
     </entity>
     <entity name="Alarm" representedClassName="Alarm" syncable="YES" codeGenerationType="category">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="afters" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[After]"/>
-        <attribute name="befores" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[Before]"/>
         <attribute name="daysOfWeek" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Bool]"/>
         <attribute name="hours" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
@@ -16,14 +15,17 @@
         <attribute name="notificationIDs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="&quot;&quot;" customClassName="[String]"/>
         <attribute name="offForADay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="sound" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <relationship name="afters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="After" inverseName="alarm" inverseEntity="After"/>
+        <relationship name="befores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Before" inverseName="alarm" inverseEntity="Before"/>
     </entity>
     <entity name="Before" representedClassName="Before" syncable="YES" codeGenerationType="class">
         <attribute name="notificationID" optional="YES" attributeType="String"/>
         <attribute name="offset" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="befores" inverseEntity="Alarm"/>
     </entity>
     <elements>
-        <element name="After" positionX="26.421875" positionY="30.80859375" width="128" height="73"/>
-        <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="28"/>
-        <element name="Before" positionX="54.65625" positionY="-96.74609375" width="128" height="73"/>
+        <element name="After" positionX="26.421875" positionY="30.80859375" width="128" height="88"/>
+        <element name="Alarm" positionX="-297" positionY="-166.0390625" width="128" height="208"/>
+        <element name="Before" positionX="54.65625" positionY="-96.74609375" width="128" height="88"/>
     </elements>
 </model>

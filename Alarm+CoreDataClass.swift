@@ -49,4 +49,38 @@ public class Alarm: NSManagedObject {
         if days[6] && addWeekends { daysOfWeekString.append("Saturday") }
         return daysOfWeekString.joined(separator: ", ")
     }
+
+    func beforeInts() -> [Int] {
+        var set: [Int] = []
+        for before in befores! {
+            set.append(Int((before as AnyObject).offset))
+        }
+        return set
+    }
+
+    func afterInts() -> [Int] {
+        var set: [Int] = []
+        for after in afters! {
+            set.append(Int((after as AnyObject).offset))
+        }
+        return set
+    }
+
+    func allNotificationIDs() -> [String] {
+        var set: [String] = []
+
+        for before in befores! {
+            set.append((before as AnyObject).notificationID ?? "")
+        }
+
+        for after in afters! {
+            set.append((after as AnyObject).notificationID ?? "")
+        }
+
+        for id in notificationIDs! {
+            set.append(id)
+        }
+        return set
+    }
+
 }
